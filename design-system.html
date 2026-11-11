@@ -1,0 +1,247 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FestHey Design System</title>
+<meta name="description" content="Experience the raw energy of Indian college festivals. Discover, register, and conquer the biggest stages across the country.">
+<meta name="theme-color" content="#FF5A14">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://api.fontshare.com" crossorigin>
+<link href="https://api.fontshare.com/v2/css?f[]=clash-display@500,600,700&amp;f[]=satoshi@400,500,700,900&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
+<script>(function(){var f=/[?&]figma/.test(location.search)||navigator.webdriver;document.documentElement.className=f?'figma':'anim';})();</script>
+</head>
+<body>
+<div class="noise" aria-hidden="true"></div>
+<link rel="stylesheet" href="assets/ds.css">
+<header class="dsx-hero">
+  <span class="grain" aria-hidden="true"></span>
+  <div class="wrap dsx-hero-in">
+    <img class="dsx-logo" src="assets/img/logo.svg" alt="FestHey" width="1024" height="309">
+    <p class="eyebrow eyebrow--ink"><span></span>Version 5, November 2026</p>
+    <h1 class="hero-h">Design <mark class="mark">system</mark></h1>
+    <p class="lead">Foundations, components and patterns behind the FestHey landing page. Built on a 2px grid with a strict type scale.</p>
+    <div class="dsx-hero-specs"><span class="dsx-spec"><b>Grid</b>2px</span><span class="dsx-spec"><b>Type</b>64 / 48 / 12 / 16 / 14 / 12</span><span class="dsx-spec"><b>Line height</b>size + 8 or + 16</span><span class="dsx-spec"><b>Fonts</b>Clash Display + Satoshi</span></div>
+  </div>
+</header>
+<div class="wrap dsx-layout">
+  <nav class="dsx-side" aria-label="Design system sections"><a href="#principles">Principles</a><a href="#colour">Colour</a><a href="#type">Typography</a><a href="#space">Spacing</a><a href="#layout">Layout and grid</a><a href="#radius">Radius and borders</a><a href="#depth">Elevation</a><a href="#texture">Texture</a><a href="#icons">Icons</a><a href="#motion">Motion</a><a href="#buttons">Buttons</a><a href="#chips">Chips and tags</a><a href="#forms">Form fields</a><a href="#cards">Cards</a><a href="#lists">Lists and FAQ</a><a href="#navigation">Navigation</a><a href="#patterns">Section patterns</a><a href="#voice">Copy rules</a><a href="#tokens">Token reference</a><a class="dsx-back" href="index.html">Back to the page</a></nav>
+  <main class="dsx-main">
+    <section class="dsx-sec" id="principles">
+      <p class="eyebrow"><span></span>01 Foundations</p>
+      <h2>Principles</h2>
+      <p class="dsx-intro">Four rules every screen follows. If a choice breaks one, it is the wrong choice.</p>
+      
+      <div class="dsx-grid4">
+        <div class="dsx-card"><b>Say it in a second</b><p>Lead with what FestHey is: college fests, all in one place. The headline and first image must explain the product without scrolling.</p></div>
+        <div class="dsx-card"><b>Real things, real people</b><p>Use photographed cut-outs of real objects (lanyards, phones, hands, tape, paper) and real campus photos. Never draw what can be photographed.</p></div>
+        <div class="dsx-card"><b>Loud colour, calm layout</b><p>Orange and sun carry the energy. Layouts stay simple: one message and one action per section, clean grids, generous space.</p></div>
+        <div class="dsx-card"><b>Everything on the 2px grid</b><p>Every size, space, radius and border is a multiple of 2. Line height is the font size plus 8 or plus 16.</p></div>
+      </div>
+    </section>
+    <section class="dsx-sec" id="colour">
+      <p class="eyebrow"><span></span>02 Foundations</p>
+      <h2>Colour</h2>
+      <p class="dsx-intro">Five core colours plus four ink tints. Orange leads, sun accents, snow and paper keep it light, ink does the reading.</p>
+      <div class="dsx-swatches"><div class="dsx-sw"><span class="dsx-swc" style="background:var(--orange);color:var(--snow)">Aa</span><b>Orange</b><code>--orange</code><code>#FF5A14</code><small>Primary brand. Hero ground, primary buttons, live dots, accents.</small></div><div class="dsx-sw"><span class="dsx-swc" style="background:var(--orange-700);color:var(--snow)">Aa</span><b>Orange 700</b><code>--orange-700</code><code>#E2470A</code><small>Text on light grounds where orange must read (tags, hovers).</small></div><div class="dsx-sw"><span class="dsx-swc" style="background:var(--sun);color:var(--ink)">Aa</span><b>Sun</b><code>--sun</code><code>#FFD400</code><small>Accent. Marker highlight, stickers, the FAQ ground, date blocks.</small></div><div class="dsx-sw"><span class="dsx-swc" style="background:var(--snow);color:var(--ink)">Aa</span><b>Snow</b><code>--snow</code><code>#F7F5F0</code><small>Page ground. Light button fill.</small></div><div class="dsx-sw"><span class="dsx-swc" style="background:var(--paper);color:var(--ink)">Aa</span><b>Paper</b><code>--paper</code><code>#FFFFFF</code><small>Cards and raised surfaces.</small></div><div class="dsx-sw"><span class="dsx-swc" style="background:var(--ink);color:var(--snow)">Aa</span><b>Ink</b><code>--ink</code><code>#140A04</code><small>Text, dark buttons, outlines. Never pure black.</small></div><div class="dsx-sw"><span class="dsx-swc" style="background:var(--ink-75);color:var(--snow)">Aa</span><b>Ink 75</b><code>--ink-75</code><code>rgba(20,10,4,.75)</code><small>Secondary paragraphs.</small></div><div class="dsx-sw"><span class="dsx-swc" style="background:var(--ink-60);color:var(--snow)">Aa</span><b>Ink 60</b><code>--ink-60</code><code>rgba(20,10,4,.6)</code><small>Meta text: venues, colleges, captions.</small></div><div class="dsx-sw"><span class="dsx-swc" style="background:var(--line);color:var(--ink)">Aa</span><b>Line</b><code>--line</code><code>rgba(20,10,4,.12)</code><small>Hairlines and chip outlines.</small></div><div class="dsx-sw"><span class="dsx-swc" style="background:var(--line-2);color:var(--ink)">Aa</span><b>Line 2</b><code>--line-2</code><code>rgba(20,10,4,.2)</code><small>Dividers on yellow and dashed tear lines.</small></div></div><h3 class="dsx-h">Proportion</h3><div class="dsx-prop"><span style="flex:44;background:var(--snow)">Snow 44%</span><span style="flex:22;background:var(--orange);color:var(--snow)">Orange 22%</span><span style="flex:12;background:var(--paper)">Paper 12%</span><span style="flex:12;background:var(--sun)">Sun 12%</span><span style="flex:10;background:var(--ink);color:var(--snow)">Ink 10%</span></div><h3 class="dsx-h">Contrast pairs</h3><div class="dsx-pairs"><div class="dsx-pair" style="background:var(--snow);color:var(--ink)"><b>Ink on Snow</b><span>17.9 : 1</span><small>AAA</small></div><div class="dsx-pair" style="background:var(--sun);color:var(--ink)"><b>Ink on Sun</b><span>14.6 : 1</span><small>AAA</small></div><div class="dsx-pair" style="background:var(--orange);color:var(--ink)"><b>Ink on Orange</b><span>6.3 : 1</span><small>AA</small></div><div class="dsx-pair" style="background:var(--orange);color:var(--snow)"><b>Snow on Orange</b><span>2.9 : 1</span><small>Large text only</small></div><div class="dsx-pair" style="background:var(--ink);color:var(--snow)"><b>Snow on Ink</b><span>17.9 : 1</span><small>AAA</small></div><div class="dsx-pair" style="background:var(--snow);color:var(--orange-700)"><b>Orange 700 on Snow</b><span>3.6 : 1</span><small>Large or bold 14+</small></div></div>
+    </section>
+    <section class="dsx-sec" id="type">
+      <p class="eyebrow"><span></span>03 Foundations</p>
+      <h2>Typography</h2>
+      <p class="dsx-intro">Two families. Clash Display for headings and numbers, Satoshi for everything you read or tap. Line height is always the size plus 8 (plus 16 for long reading).</p>
+      <div class="dsx-fonts"><div class="dsx-font"><span class="dsx-aa" style="font-family:var(--fd);font-weight:700">Aa</span><b>Clash Display</b><small>500, 600, 700. Headings, card titles, prices, dates.</small></div><div class="dsx-font"><span class="dsx-aa" style="font-family:var(--fb);font-weight:500">Aa</span><b>Satoshi</b><small>400, 500, 700, 900. Body, buttons, chips, nav, labels.</small></div></div><div class="dsx-type"><div class="dsx-trow"><div class="dsx-tmeta"><b>H1</b><small>Hero title</small><span class="dsx-spec"><b>Font</b>Clash Display 700</span><span class="dsx-spec"><b>Size / line</b>64 / 72</span><span class="dsx-spec"><b>Note</b>Phones 48 / 56</span></div><div class="dsx-t-h1">India's <mark class='mark'>college fests</mark></div></div><div class="dsx-trow"><div class="dsx-tmeta"><b>H2</b><small>Section heading</small><span class="dsx-spec"><b>Font</b>Clash Display 600</span><span class="dsx-spec"><b>Size / line</b>48 / 56</span><span class="dsx-spec"><b>Note</b>All widths</span></div><div class="dsx-t-h2">FESTS &amp; EVENTS</div></div><div class="dsx-trow"><div class="dsx-tmeta"><b>H3</b><small>Eyebrow</small><span class="dsx-spec"><b>Font</b>Satoshi 700, caps, +8% tracking</span><span class="dsx-spec"><b>Size / line</b>12 / 20</span><span class="dsx-spec"><b>Note</b>Above every H2</span></div><div class="dsx-t-eb"><span class="eyebrow" style="margin:0"><span></span>Backstage Access</span></div></div><div class="dsx-trow"><div class="dsx-tmeta"><b>Title L</b><small>Card title</small><span class="dsx-spec"><b>Font</b>Clash Display 600</span><span class="dsx-spec"><b>Size / line</b>24 / 32</span><span class="dsx-spec"><b>Note</b>Fest cards, featured fests</span></div><div class="dsx-t-h3">8th Mile Encore</div></div><div class="dsx-trow"><div class="dsx-tmeta"><b>Title M</b><small>Small title, lead</small><span class="dsx-spec"><b>Font</b>Clash Display 600 / Satoshi 500</span><span class="dsx-spec"><b>Size / line</b>20 / 28</span><span class="dsx-spec"><b>Note</b>Event cards, intro paragraphs</span></div><div class="dsx-t-h4">Line Follower Sprint</div></div><div class="dsx-trow"><div class="dsx-tmeta"><b>Body 16</b><small>Paragraph, buttons</small><span class="dsx-spec"><b>Font</b>Satoshi 400 to 700</span><span class="dsx-spec"><b>Size / line</b>16 / 24</span><span class="dsx-spec"><b>Note</b>Long reading 16 / 32</span></div><div class="dsx-t-16">Open the fest, pick any event inside it, and hit Register.</div></div><div class="dsx-trow"><div class="dsx-tmeta"><b>Body 14</b><small>Meta, nav, chips</small><span class="dsx-spec"><b>Font</b>Satoshi 500 to 700</span><span class="dsx-spec"><b>Size / line</b>14 / 22</span><span class="dsx-spec"><b>Note</b>Relaxed 14 / 30</span></div><div class="dsx-t-14">Main Grounds, MSRIT</div></div><div class="dsx-trow"><div class="dsx-tmeta"><b>Body 12</b><small>Labels, tags, captions</small><span class="dsx-spec"><b>Font</b>Satoshi 700</span><span class="dsx-spec"><b>Size / line</b>12 / 20</span><span class="dsx-spec"><b>Note</b>Relaxed 12 / 28</span></div><div class="dsx-t-12">Bengaluru</div></div></div><h3 class="dsx-h">Highlight</h3><div class="dsx-two"><div class="dsx-card"><div class="dsx-t-h2">India's <mark class="mark">college fests</mark></div><p class="dsx-ok">Do: a straight marker band behind 1 to 3 words, ink text on sun.</p></div><div class="dsx-card"><div class="dsx-t-h2"><span style="display:inline-block;background:var(--sun);transform:rotate(-3deg);padding:0 8px">college fests</span></div><p class="dsx-no">Don't: tilted blocks, or more than one highlight per heading.</p></div></div>
+    </section>
+    <section class="dsx-sec" id="space">
+      <p class="eyebrow"><span></span>04 Foundations</p>
+      <h2>Spacing</h2>
+      <p class="dsx-intro">An even scale on the 2px grid. Pick from the scale; never invent a value in between.</p>
+      <div class="dsx-space"><div class="dsx-srow"><code>2</code><span class="dsx-bar" style="width:8px"></span><small>Hairline nudges</small></div><div class="dsx-srow"><code>4</code><span class="dsx-bar" style="width:16px"></span><small>Icon to text</small></div><div class="dsx-srow"><code>8</code><span class="dsx-bar" style="width:32px"></span><small>Tight gaps, chip rows</small></div><div class="dsx-srow"><code>12</code><span class="dsx-bar" style="width:48px"></span><small>Card inner padding</small></div><div class="dsx-srow"><code>16</code><span class="dsx-bar" style="width:64px"></span><small>Default gap</small></div><div class="dsx-srow"><code>24</code><span class="dsx-bar" style="width:96px"></span><small>Heading to text</small></div><div class="dsx-srow"><code>32</code><span class="dsx-bar" style="width:128px"></span><small>Between groups</small></div><div class="dsx-srow"><code>48</code><span class="dsx-bar" style="width:192px"></span><small>Between sub-sections</small></div><div class="dsx-srow"><code>64</code><span class="dsx-bar" style="width:256px"></span><small>Large blocks</small></div><div class="dsx-srow"><code>96</code><span class="dsx-bar" style="width:384px"></span><small>Section padding on phones</small></div><div class="dsx-srow"><code>140</code><span class="dsx-bar" style="width:560px"></span><small>Section padding on desktop</small></div></div>
+    </section>
+    <section class="dsx-sec" id="layout">
+      <p class="eyebrow"><span></span>05 Foundations</p>
+      <h2>Layout and grid</h2>
+      <p class="dsx-intro">A 12-column grid, 1440 wide, with a gutter that grows from 16 to 56. Sections stack with 96 to 140 of air.</p>
+      <div class="dsx-cols"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div><div class="dsx-grid4"><div class="dsx-card"><b>Desktop 1440</b><p>12 columns, 56 gutter, 24 gap. Cards run 4 across.</p></div><div class="dsx-card"><b>Laptop 1180</b><p>12 columns, 48 gutter. Cards run 3 across.</p></div><div class="dsx-card"><b>Tablet 768</b><p>6 columns, 32 gutter. Cards 2 across, hero stacks.</p></div><div class="dsx-card"><b>Phone 375</b><p>4 columns, 16 gutter. Rows swipe sideways with snap.</p></div></div>
+    </section>
+    <section class="dsx-sec" id="radius">
+      <p class="eyebrow"><span></span>06 Foundations</p>
+      <h2>Radius and borders</h2>
+      <p class="dsx-intro">Four radii and one border weight. Borders are 2, dashed when something tears (tickets, stubs).</p>
+      <div class="dsx-row"><div class="dsx-box" style="border-radius:12px"><b>r-sm</b><code>12</code><small>Image insets, date blocks</small></div><div class="dsx-box" style="border-radius:16px"><b>r-md</b><code>16</code><small>Photos inside cards, fields</small></div><div class="dsx-box" style="border-radius:24px"><b>r-lg</b><code>24</code><small>Cards</small></div><div class="dsx-box" style="border-radius:100px"><b>r-pill</b><code>100</code><small>Buttons, chips, nav</small></div><div class="dsx-box" style="border-radius:16px;box-shadow:inset 0 0 0 2px var(--ink)"><b>Border</b><code>2 solid</code><small>Outlines, chips</small></div><div class="dsx-box" style="border-radius:16px;border:2px dashed var(--line-2)"><b>Tear line</b><code>2 dashed</code><small>Tickets, notes</small></div></div>
+    </section>
+    <section class="dsx-sec" id="depth">
+      <p class="eyebrow"><span></span>07 Foundations</p>
+      <h2>Elevation</h2>
+      <p class="dsx-intro">Two shadows, both warm. Objects that hang or are taped get a soft drop; nothing glows.</p>
+      <div class="dsx-row"><div class="dsx-box" style="box-shadow:var(--sh-1)"><b>sh-1</b><small>Cards, nav pills</small></div><div class="dsx-box" style="box-shadow:var(--sh-2)"><b>sh-2</b><small>Lifted, featured</small></div><div class="dsx-box" style="box-shadow:4px 4px 0 var(--ink);border:2px solid var(--ink)"><b>Sticker</b><small>4 offset, ink</small></div></div>
+    </section>
+    <section class="dsx-sec" id="texture">
+      <p class="eyebrow"><span></span>08 Foundations</p>
+      <h2>Texture</h2>
+      <p class="dsx-intro">Grain is part of the brand. A light grain over the whole page, a heavier one on orange and yellow sections.</p>
+      <div class="dsx-row"><div class="dsx-tex" style="background:var(--snow)"><span class="grain" style="opacity:.12"></span><b>Page grain</b><small>12% over everything</small></div><div class="dsx-tex" style="background:var(--orange);color:var(--snow)"><span class="grain"></span><b>Section grain</b><small>42% on orange, sun, pit</small></div><div class="dsx-tex" style="background:url(assets/img/v2/paper-orange.jpg) center/cover"><b>Paper</b><small>Host card, posters</small></div><div class="dsx-tex" style="background:url(assets/img/v2/wall-day.jpg) center/cover"><b>Campus wall</b><small>Footer ground</small></div></div>
+    </section>
+    <section class="dsx-sec" id="icons">
+      <p class="eyebrow"><span></span>09 Foundations</p>
+      <h2>Icons</h2>
+      <p class="dsx-intro">One line set, 2 stroke, round caps, drawn on a 24 grid and shown at 16, 18 or 20. Arrows sit in a round dot inside buttons.</p>
+      <div class="dsx-icons"><div class="dsx-ic"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg><small>arrow</small></div><div class="dsx-ic"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg><small>right</small></div><div class="dsx-ic"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg><small>left</small></div><div class="dsx-ic"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12 7-7 7 7"/><path d="M12 19V5"/></svg><small>up</small></div><div class="dsx-ic"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><small>check</small></div><div class="dsx-ic"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg><small>mail</small></div><div class="dsx-ic"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg><small>lock</small></div><div class="dsx-ic"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg><small>msg</small></div><div class="dsx-ic"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16"/><path d="M4 12h16"/><path d="M4 17h16"/></svg><small>menu</small></div><div class="dsx-ic"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M14.536 21.686a.5.5 0 0 0 .937-.024l6.5-19a.496.496 0 0 0-.635-.635l-19 6.5a.5.5 0 0 0-.024.937l7.93 3.18a2 2 0 0 1 1.112 1.11z"/><path d="m21.854 2.147-10.94 10.939"/></svg><small>send</small></div><div class="dsx-ic"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><path d="M17.5 6.5h.01"/></svg><small>insta</small></div><div class="dsx-ic"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg><small>linkedin</small></div><div class="dsx-ic"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17"/><path d="m10 15 5-3-5-3z"/></svg><small>youtube</small></div></div>
+    </section>
+    <section class="dsx-sec" id="motion">
+      <p class="eyebrow"><span></span>10 Foundations</p>
+      <h2>Motion</h2>
+      <p class="dsx-intro">Physical, never decorative. Things hang, swing, tilt and settle on springs. Every animation has a static state for Figma and reduced motion.</p>
+      <div class="dsx-motion"><div class="dsx-mrow"><code>--ease</code><span>cubic-bezier(.2,.8,.2,1)</span><small>Reveals, slides, fades</small></div><div class="dsx-mrow"><code>--spring</code><span>cubic-bezier(.3,1.5,.5,1)</span><small>Hovers, tilts, button dots</small></div><div class="dsx-mrow"><code>Fast</code><span>.3s</span><small>Colour and shadow changes</small></div><div class="dsx-mrow"><code>Base</code><span>.6s</span><small>Cards lifting, chips filtering</small></div><div class="dsx-mrow"><code>Slow</code><span>1.2s</span><small>Section reveals, photo zooms</small></div></div><div class="dsx-row"><div class="dsx-box dsx-demo dsx-demo-spring"><b>Hover me</b><small>spring lift</small></div><div class="dsx-box dsx-demo dsx-demo-tilt"><b>Hover me</b><small>hang tilt</small></div></div>
+    </section>
+    <section class="dsx-sec" id="buttons">
+      <p class="eyebrow"><span></span>11 Components</p>
+      <h2>Buttons</h2>
+      <p class="dsx-intro">Every button is solid with an arrow dot. Two heights: 56 and 44. One primary action per view.</p>
+      <div class="dsx-stage"><div class="dsx-row"><a class="btn btn--primary" href="#">Primary<span class="dot"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg></span></a><a class="btn btn--ink" href="#">Ink<span class="dot"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg></span></a><a class="btn btn--ink btn--sm" href="#">Small<span class="dot"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg></span></a></div></div><div class="dsx-stage dsx-stage--orange"><div class="dsx-row"><a class="btn btn--light" href="#">Light<span class="dot"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg></span></a><a class="btn btn--ink" href="#">Ink on orange<span class="dot"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg></span></a></div></div><div class="dsx-row"><button class="icon-btn" aria-label="Previous"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg></button><button class="icon-btn" aria-label="Next"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></button><a class="icon-btn icon-btn--ink" href="#" aria-label="Top"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12 7-7 7 7"/><path d="M12 19V5"/></svg></a></div><div class="dsx-specs"><span class="dsx-spec"><b>Height</b>56 / 44</span><span class="dsx-spec"><b>Padding</b>24 left, 8 right / 18 left, 6 right</span><span class="dsx-spec"><b>Dot</b>40 / 32</span><span class="dsx-spec"><b>Type</b>16 / 24 Satoshi 700, 14 / 22 on small</span><span class="dsx-spec"><b>Hover</b>Fill shifts one step, dot turns 45 degrees</span></div>
+    </section>
+    <section class="dsx-sec" id="chips">
+      <p class="eyebrow"><span></span>12 Components</p>
+      <h2>Chips and tags</h2>
+      <p class="dsx-intro">Filters are 42 high with a 2 outline; tags on photos are 32 high and filled.</p>
+      <div class="dsx-row"><button class="chip is-on" data-cat="all" aria-pressed="true">All Categories</button><button class="chip" data-cat="cultural" aria-pressed="false">Cultural</button><button class="chip" data-cat="technical" aria-pressed="false">Technical</button><button class="chip" data-cat="sports" aria-pressed="false">Sports</button></div><div class="dsx-row"><span class="chip chip--light">Dec 5 to Dec 6</span><span class="chip chip--ink">AD</span><span class="dsx-photo"><span class="chip chip--glass">Bengaluru</span></span><span class="dsx-ticker-demo"><span class="live"></span>MSRIT Sports Meet</span></div>
+    </section>
+    <section class="dsx-sec" id="forms">
+      <p class="eyebrow"><span></span>13 Components</p>
+      <h2>Form fields</h2>
+      <p class="dsx-intro">One field style: 56 high, 16 radius, 2 outline. Focus adds an ink outline and a sun offset shadow.</p>
+      <div class="dsx-two"><div class="dsx-card"><label class="fld"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg><input type="email" placeholder="Email address" aria-label="Email address"></label><small class="dsx-cap">Default</small></div>
+      <div class="dsx-card"><label class="fld dsx-focus"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg><input type="email" value="student@college.edu" aria-label="Email address"></label><small class="dsx-cap">Focus</small></div></div>
+    </section>
+    <section class="dsx-sec" id="cards">
+      <p class="eyebrow"><span></span>14 Components</p>
+      <h2>Cards</h2>
+      <p class="dsx-intro">Five cards, one family: paper or brand-colour grounds, 24 radius, photo inset at 16, Clash titles, an action at the foot.</p>
+      <div class="dsx-cards"><div class="dsx-cardcell"><div class="fests dsx-one">
+        <a class="fest fest--snow" href="https://festhey.agpro.co.in/fests/8th-mile-encore" data-cat="cultural">
+          <span class="slot"></span>
+          <span class="f-ph"><img src="assets/img/fests/fest-cultural.jpg" alt="" width="1280" height="720"><span class="chip chip--light f-date">Dec 5 to Dec 6</span><span class="chip chip--glass f-city">Bengaluru</span></span>
+          <span class="f-name">8th Mile Encore</span>
+          <span class="f-stats"><span><b>7+</b>Events</span><span><b>0</b>Attending</span></span>
+          <span class="btn btn--ink btn--block f-cta">Explore<span class="dot"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg></span></span>
+        </a></div><small class="dsx-cap">Fest pass</small></div><div class="dsx-cardcell"><div class="fests dsx-one">
+        <a class="fest fest--orange" href="https://festhey.agpro.co.in/fests/christ-code-sprint" data-cat="hackathon">
+          <span class="slot"></span>
+          <span class="f-ph"><img src="assets/img/fests/event-hackathon.jpg" alt="" width="1280" height="720"><span class="chip chip--light f-date">Dec 17 to Dec 18</span><span class="chip chip--glass f-city">Bengaluru</span></span>
+          <span class="f-name">Christ Code Sprint</span>
+          <span class="f-stats"><span><b>5+</b>Events</span><span><b>0</b>Attending</span></span>
+          <span class="btn btn--ink btn--block f-cta">Explore<span class="dot"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg></span></span>
+        </a></div><small class="dsx-cap">Fest pass, orange</small></div><div class="dsx-cardcell dsx-on-orange"><div class="dsx-fcard">
+        <a class="fcard is-c dsx-static" href="https://festhey.agpro.co.in/fests/msrit-sports-meet" data-i="0" draggable="false">
+          <span class="fcard-ph"><img src="assets/img/fests/ad-event-basketball.jpg" alt="" width="1280" height="720" draggable="false"><span class="chip chip--ink fcard-ad">AD</span></span>
+          <span class="fcard-tag">Football, Basketball and More</span>
+          <span class="fcard-name">MSRIT Sports Meet</span>
+          <span class="fcard-col">M S Ramaiah Institute of Technology</span>
+          <span class="btn btn--ink btn--sm btn--block">Explore Event<span class="dot"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg></span></span>
+        </a></div><small class="dsx-cap">Featured fest (hero)</small></div><div class="dsx-cardcell"><div class="ev-row v-ticket dsx-one">
+          <a class="evc" href="https://festhey.agpro.co.in/events/line-follower-sprint-ymdlgs" data-cat="technical" draggable="false">
+            <span class="evc-rings"><span></span><span></span></span>
+            <span class="evc-ph"><img src="assets/img/fests/event-robotics-demo.jpg" alt="" width="1280" height="720" draggable="false"><span class="evc-shade"></span></span>
+            <span class="evc-date"><b>30</b><small>December</small></span>
+            <span class="chip chip--light evc-fest">Brain Wars</span>
+            <span class="evc-body"><span class="evc-name">Line Follower Sprint</span><span class="evc-venue">Main Grounds, MSRIT</span></span>
+            <span class="evc-cut"><span></span><span></span></span>
+            <span class="evc-foot"><span class="evc-price"><b>₹349.00</b> / Member</span><span class="btn btn--ink btn--sm">Register<span class="dot"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg></span></span></span>
+          </a></div><small class="dsx-cap">Event ticket</small></div><div class="dsx-cardcell"><div class="ev-row v-calendar dsx-one">
+          <a class="evc" href="https://festhey.agpro.co.in/events/general-quiz-hhbpkh" data-cat="quiz" draggable="false">
+            <span class="evc-rings"><span></span><span></span></span>
+            <span class="evc-ph"><img src="assets/img/fests/gallery-stage.jpg" alt="" width="1280" height="720" draggable="false"><span class="evc-shade"></span></span>
+            <span class="evc-date"><b>31</b><small>December</small></span>
+            <span class="chip chip--light evc-fest">Brain Wars</span>
+            <span class="evc-body"><span class="evc-name">General Quiz</span><span class="evc-venue">Main Grounds, MSRIT</span></span>
+            <span class="evc-cut"><span></span><span></span></span>
+            <span class="evc-foot"><span class="evc-price"><b>₹199.00</b> / Member</span><span class="btn btn--ink btn--sm">Register<span class="dot"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg></span></span></span>
+          </a></div><small class="dsx-cap">Event calendar</small></div><div class="dsx-cardcell"><div class="ev-row v-poster dsx-one">
+          <a class="evc" href="https://festhey.agpro.co.in/events/pop-culture-quiz-67epp3" data-cat="quiz" draggable="false">
+            <span class="evc-rings"><span></span><span></span></span>
+            <span class="evc-ph"><img src="assets/img/fests/ad-fest-music.jpg" alt="" width="1280" height="720" draggable="false"><span class="evc-shade"></span></span>
+            <span class="evc-date"><b>26</b><small>December</small></span>
+            <span class="chip chip--light evc-fest">Hack-a-Thon BMS</span>
+            <span class="evc-body"><span class="evc-name">Pop Culture Quiz</span><span class="evc-venue">PJA Auditorium, BMSCE</span></span>
+            <span class="evc-cut"><span></span><span></span></span>
+            <span class="evc-foot"><span class="evc-price"><b>₹199.00</b> / Member</span><span class="btn btn--ink btn--sm">Register<span class="dot"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg></span></span></span>
+          </a></div><small class="dsx-cap">Event poster</small></div></div>
+    </section>
+    <section class="dsx-sec" id="lists">
+      <p class="eyebrow"><span></span>15 Components</p>
+      <h2>Lists and FAQ</h2>
+      <p class="dsx-intro">FAQ rows are 2-ruled lines; the open row inverts to ink. On desktop answers arrive as chat bubbles.</p>
+      <div class="dsx-two"><div class="dsx-faq">
+          <div class="qa is-on" data-i="0">
+            <button class="qa-q" aria-expanded="true" aria-controls="qa1" id="qq1">
+              <span class="qa-n">01</span><span class="qa-t">What is FestHey?</span><span class="qa-go"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg></span>
+            </button>
+            <div class="qa-a" id="qa1" role="region" aria-labelledby="qq1"><div><div class="bub bub-bot"><p>FestHey is India's leading campus fest management platform that connects students with college festivals, events, and competitions across the country.</p></div></div></div>
+          </div>
+          <div class="qa" data-i="1">
+            <button class="qa-q" aria-expanded="false" aria-controls="qa2" id="qq2">
+              <span class="qa-n">02</span><span class="qa-t">How do I register for a fest?</span><span class="qa-go"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg></span>
+            </button>
+            <div class="qa-a" id="qa2" role="region" aria-labelledby="qq2"><div><div class="bub bub-bot"><p>Open the fest, pick any event inside it, and hit Register. Solo events confirm instantly. Team events let you invite teammates by link before you check out.</p></div></div></div>
+          </div>
+          <div class="qa" data-i="2">
+            <button class="qa-q" aria-expanded="false" aria-controls="qa3" id="qq3">
+              <span class="qa-n">03</span><span class="qa-t">Is there any registration fee?</span><span class="qa-go"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg></span>
+            </button>
+            <div class="qa-a" id="qa3" role="region" aria-labelledby="qq3"><div><div class="bub bub-bot"><p>It depends on the event - many are completely free. Where there is a fee, both the amount and the convenience fee are shown before you pay, so there are no surprises at checkout.</p></div></div></div>
+          </div></div><div class="dsx-chat"><div class="bub bub-me">What is FestHey?</div><div class="bub bub-bot"><p>FestHey is India's leading campus fest management platform that connects students with college festivals, events, and competitions across the country.</p></div></div></div>
+    </section>
+    <section class="dsx-sec" id="navigation">
+      <p class="eyebrow"><span></span>16 Components</p>
+      <h2>Navigation</h2>
+      <p class="dsx-intro">A ticker of featured fests, a logo tab hanging from it, pill links on the left and Get Started on the right. It hides on scroll down and returns on scroll up.</p>
+      <div class="dsx-navdemo">
+<header class="nav dsx-nav">
+  <div class="ticker"><div class="ticker-run"><a href="https://festhey.agpro.co.in/fests/msrit-sports-meet"><span class="live"></span>MSRIT Sports Meet</a><svg class="star" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0l2.6 8.2L23 6.5l-6.3 5.5L23 17.5l-8.4-1.7L12 24l-2.6-8.2L1 17.5l6.3-5.5L1 6.5l8.4 1.7z"/></svg><a href="https://festhey.agpro.co.in/fests/utsav-winter-edition"><span class="live"></span>Utsav Winter Edition</a><svg class="star" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0l2.6 8.2L23 6.5l-6.3 5.5L23 17.5l-8.4-1.7L12 24l-2.6-8.2L1 17.5l6.3-5.5L1 6.5l8.4 1.7z"/></svg><a href="https://festhey.agpro.co.in/fests/hack-rvce-winter"><span class="live"></span>Hack RVCE Winter</a><svg class="star" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0l2.6 8.2L23 6.5l-6.3 5.5L23 17.5l-8.4-1.7L12 24l-2.6-8.2L1 17.5l6.3-5.5L1 6.5l8.4 1.7z"/></svg><a href="https://festhey.agpro.co.in/fests/msrit-sports-meet"><span class="live"></span>MSRIT Sports Meet</a><svg class="star" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0l2.6 8.2L23 6.5l-6.3 5.5L23 17.5l-8.4-1.7L12 24l-2.6-8.2L1 17.5l6.3-5.5L1 6.5l8.4 1.7z"/></svg><a href="https://festhey.agpro.co.in/fests/utsav-winter-edition"><span class="live"></span>Utsav Winter Edition</a><svg class="star" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0l2.6 8.2L23 6.5l-6.3 5.5L23 17.5l-8.4-1.7L12 24l-2.6-8.2L1 17.5l6.3-5.5L1 6.5l8.4 1.7z"/></svg><a href="https://festhey.agpro.co.in/fests/hack-rvce-winter"><span class="live"></span>Hack RVCE Winter</a><svg class="star" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0l2.6 8.2L23 6.5l-6.3 5.5L23 17.5l-8.4-1.7L12 24l-2.6-8.2L1 17.5l6.3-5.5L1 6.5l8.4 1.7z"/></svg><a href="https://festhey.agpro.co.in/fests/msrit-sports-meet"><span class="live"></span>MSRIT Sports Meet</a><svg class="star" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0l2.6 8.2L23 6.5l-6.3 5.5L23 17.5l-8.4-1.7L12 24l-2.6-8.2L1 17.5l6.3-5.5L1 6.5l8.4 1.7z"/></svg><a href="https://festhey.agpro.co.in/fests/utsav-winter-edition"><span class="live"></span>Utsav Winter Edition</a><svg class="star" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0l2.6 8.2L23 6.5l-6.3 5.5L23 17.5l-8.4-1.7L12 24l-2.6-8.2L1 17.5l6.3-5.5L1 6.5l8.4 1.7z"/></svg><a href="https://festhey.agpro.co.in/fests/hack-rvce-winter"><span class="live"></span>Hack RVCE Winter</a><svg class="star" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0l2.6 8.2L23 6.5l-6.3 5.5L23 17.5l-8.4-1.7L12 24l-2.6-8.2L1 17.5l6.3-5.5L1 6.5l8.4 1.7z"/></svg><a href="https://festhey.agpro.co.in/fests/msrit-sports-meet"><span class="live"></span>MSRIT Sports Meet</a><svg class="star" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0l2.6 8.2L23 6.5l-6.3 5.5L23 17.5l-8.4-1.7L12 24l-2.6-8.2L1 17.5l6.3-5.5L1 6.5l8.4 1.7z"/></svg><a href="https://festhey.agpro.co.in/fests/utsav-winter-edition"><span class="live"></span>Utsav Winter Edition</a><svg class="star" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0l2.6 8.2L23 6.5l-6.3 5.5L23 17.5l-8.4-1.7L12 24l-2.6-8.2L1 17.5l6.3-5.5L1 6.5l8.4 1.7z"/></svg><a href="https://festhey.agpro.co.in/fests/hack-rvce-winter"><span class="live"></span>Hack RVCE Winter</a><svg class="star" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0l2.6 8.2L23 6.5l-6.3 5.5L23 17.5l-8.4-1.7L12 24l-2.6-8.2L1 17.5l6.3-5.5L1 6.5l8.4 1.7z"/></svg><a href="https://festhey.agpro.co.in/fests/msrit-sports-meet"><span class="live"></span>MSRIT Sports Meet</a><svg class="star" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0l2.6 8.2L23 6.5l-6.3 5.5L23 17.5l-8.4-1.7L12 24l-2.6-8.2L1 17.5l6.3-5.5L1 6.5l8.4 1.7z"/></svg><a href="https://festhey.agpro.co.in/fests/utsav-winter-edition"><span class="live"></span>Utsav Winter Edition</a><svg class="star" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0l2.6 8.2L23 6.5l-6.3 5.5L23 17.5l-8.4-1.7L12 24l-2.6-8.2L1 17.5l6.3-5.5L1 6.5l8.4 1.7z"/></svg><a href="https://festhey.agpro.co.in/fests/hack-rvce-winter"><span class="live"></span>Hack RVCE Winter</a><svg class="star" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0l2.6 8.2L23 6.5l-6.3 5.5L23 17.5l-8.4-1.7L12 24l-2.6-8.2L1 17.5l6.3-5.5L1 6.5l8.4 1.7z"/></svg><a href="https://festhey.agpro.co.in/fests/msrit-sports-meet"><span class="live"></span>MSRIT Sports Meet</a><svg class="star" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0l2.6 8.2L23 6.5l-6.3 5.5L23 17.5l-8.4-1.7L12 24l-2.6-8.2L1 17.5l6.3-5.5L1 6.5l8.4 1.7z"/></svg><a href="https://festhey.agpro.co.in/fests/utsav-winter-edition"><span class="live"></span>Utsav Winter Edition</a><svg class="star" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0l2.6 8.2L23 6.5l-6.3 5.5L23 17.5l-8.4-1.7L12 24l-2.6-8.2L1 17.5l6.3-5.5L1 6.5l8.4 1.7z"/></svg><a href="https://festhey.agpro.co.in/fests/hack-rvce-winter"><span class="live"></span>Hack RVCE Winter</a><svg class="star" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0l2.6 8.2L23 6.5l-6.3 5.5L23 17.5l-8.4-1.7L12 24l-2.6-8.2L1 17.5l6.3-5.5L1 6.5l8.4 1.7z"/></svg></div></div>
+  <div class="wrap nav-row">
+    <nav class="nav-links" aria-label="Main">
+      <a href="https://festhey.agpro.co.in/colleges">Colleges</a>
+      <a href="https://festhey.agpro.co.in/fests">Fests</a>
+      <a href="https://festhey.agpro.co.in/blogs">Blogs</a>
+    </nav>
+    <button class="nav-menu" aria-label="Menu" aria-expanded="false"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16"/><path d="M4 12h16"/><path d="M4 17h16"/></svg></button>
+    <a class="notch" href="https://festhey.agpro.co.in/" aria-label="FestHey home"><svg class="notch-bg" viewBox="0 0 240 64" aria-hidden="true"><path d="M0 0H240C224 0 216 4 214 16L210 40C208 56 196 64 180 64H60C44 64 32 56 30 40L26 16C24 4 16 0 0 0Z"/></svg><img src="assets/img/logo.svg" alt="FestHey" width="132" height="40"></a>
+    <div class="nav-end"><a class="btn btn--ink btn--sm" href="https://festhey.agpro.co.in/auth/login?redirect=%2F">Get Started<span class="dot"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg></span></a></div>
+  </div>
+  <div class="wrap"><div class="nav-sheet">
+    <a href="https://festhey.agpro.co.in/colleges">Colleges</a>
+    <a href="https://festhey.agpro.co.in/fests">Fests</a>
+    <a href="https://festhey.agpro.co.in/blogs">Blogs</a>
+  </div></div>
+</header>
+</div><div class="dsx-specs"><span class="dsx-spec"><b>Ticker</b>32 high, 12 / 20 bold</span><span class="dsx-spec"><b>Logo tab</b>240 by 64, logo 40 high</span><span class="dsx-spec"><b>Links</b>14 / 22 bold, 10 by 18 padding</span><span class="dsx-spec"><b>Phones</b>Menu left, tab centre, Get Started right</span></div>
+    </section>
+    <section class="dsx-sec" id="patterns">
+      <p class="eyebrow"><span></span>17 Patterns</p>
+      <h2>Section patterns</h2>
+      <p class="dsx-intro">Every section opens the same way: eyebrow, H2, then an optional lead. Grounds alternate so the page has rhythm.</p>
+      <div class="dsx-two"><div class="dsx-card"><p class="eyebrow"><span></span>FAQs</p><h2>QUESTIONS? WE'VE GOT ANSWERS.</h2><p class="lead" style="margin-top:24px;color:var(--ink-75)">Find quick answers to the most common questions about FestHey.</p></div>
+      <div class="dsx-card"><b>Section order and grounds</b><ol class="dsx-ol"><li><span style="background:var(--orange)"></span>Hero, orange + grain</li><li><span style="background:var(--sun)"></span>Category tape</li><li><span style="background:var(--snow)"></span>Fests and Events, snow</li><li><span style="background:var(--sun)"></span>FAQ, sun + grain</li><li><span style="background:var(--orange)"></span>Join the Pit, orange + grain</li><li><span style="background:#E9E2D6"></span>Footer, campus wall</li></ol></div></div>
+    </section>
+    <section class="dsx-sec" id="voice">
+      <p class="eyebrow"><span></span>18 Content</p>
+      <h2>Copy rules</h2>
+      <p class="dsx-intro">Short, energetic, student-first. These hold on every page.</p>
+      <div class="dsx-two"><div class="dsx-card"><p class="dsx-ok">Do</p><ul class="dsx-ul"><li>Use the client's words for fests, events and FAQs</li><li>Sentence case for body; caps only for H2 and eyebrows</li><li>Prices as ₹349.00 / Member, dates as Dec 5 to Dec 6</li><li>One highlighted phrase per heading at most</li></ul></div><div class="dsx-card"><p class="dsx-no">Don't</p><ul class="dsx-ul"><li>Em or en dashes anywhere in visible copy</li><li>Italics</li><li>Decorative text scattered behind sections</li><li>Outline-only buttons</li></ul></div></div>
+    </section>
+    <section class="dsx-sec" id="tokens">
+      <p class="eyebrow"><span></span>19 Reference</p>
+      <h2>Token reference</h2>
+      <p class="dsx-intro">Every value lives as a CSS custom property in assets/site.css. Use the token, never the raw number.</p>
+      <div class="dsx-tokens"><div><code>--orange</code><span>#FF5A14</span></div><div><code>--orange-700</code><span>#E2470A</span></div><div><code>--sun</code><span>#FFD400</span></div><div><code>--snow</code><span>#F7F5F0</span></div><div><code>--paper</code><span>#FFFFFF</span></div><div><code>--ink</code><span>#140A04</span></div><div><code>--h1 / --h1-lh</code><span>64 / 72</span></div><div><code>--h2 / --h2-lh</code><span>48 / 56</span></div><div><code>--eb / --eb-lh</code><span>12 / 20</span></div><div><code>--h3 / --h3-lh</code><span>24 / 32</span></div><div><code>--h4 / --h4-lh</code><span>20 / 28</span></div><div><code>--b16 / --b16-lh</code><span>16 / 24</span></div><div><code>--b14 / --b14-lh</code><span>14 / 22</span></div><div><code>--b12 / --b12-lh</code><span>12 / 20</span></div><div><code>--r-sm / md / lg / pill</code><span>12 / 16 / 24 / 100</span></div><div><code>--pad</code><span>clamp(16, 4vw, 56)</span></div><div><code>--sec</code><span>clamp(96, 10vw, 140)</span></div><div><code>--max</code><span>1440</span></div><div><code>--sh-1</code><span>0 2 0, 0 20 38 -26 ink 45%</span></div><div><code>--sh-2</code><span>0 34 60 -30 ink 55%</span></div></div>
+    </section></main>
+</div>
+<script>
+(function(){var links=[].slice.call(document.querySelectorAll('.dsx-side a[href^="#"]'));
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){links.forEach(function(l){l.classList.toggle('on',l.getAttribute('href')==='#'+e.target.id)})}})},{rootMargin:'-40% 0px -55% 0px'});
+document.querySelectorAll('.dsx-sec').forEach(function(s){io.observe(s)});
+document.querySelectorAll('.qa-q').forEach(function(b){b.addEventListener('click',function(){var q=b.parentNode,on=q.classList.contains('is-on');document.querySelectorAll('.dsx-faq .qa').forEach(function(o){o.classList.remove('is-on')});if(!on)q.classList.add('is-on')})});
+})();
+</script>
+</body>
+</html>
