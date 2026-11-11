@@ -2,6 +2,8 @@
 """FestHey v4: builds index.html and system.html as static markup (Figma-import safe).
 Run: python3 assets/src/build.py"""
 import html, json, math
+import runpy as _rp
+_LU = _rp.run_path('/Users/durgesh/Desktop/WFT/festhey/assets/src/icons.py')
 
 ROOT = '/Users/durgesh/Desktop/WFT/festhey'
 BASE = 'https://festhey.agpro.co.in'
@@ -24,7 +26,7 @@ I = {
  'send': '<path d="M14.536 21.686a.5.5 0 0 0 .937-.024l6.5-19a.496.496 0 0 0-.635-.635l-19 6.5a.5.5 0 0 0-.024.937l7.93 3.18a2 2 0 0 1 1.112 1.11z"/><path d="m21.854 2.147-10.94 10.939"/>',
 }
 def ic(n, c='ic'):
-    return f'<svg class="{c}" viewBox="0 0 24 24" aria-hidden="true">{I[n]}</svg>'
+    return _LU['svg'](n, c)
 def btn(label, href, v='primary', size='', icon='arrow', extra=''):
     sz = f' btn--{size}' if size else ''
     return f'<a class="btn btn--{v}{sz}{extra}" href="{href}">{label}<span class="dot">{ic(icon)}</span></a>'
@@ -183,6 +185,37 @@ NAV = f'''
 
 HOST_PERKS = ['Fest and event pages in minutes', 'Registrations, team invites and payments', 'Confirmations and reminders by email', 'A live dashboard for every registration']
 
+def faq_block(items, h2="QUESTIONS? WE'VE GOT ANSWERS.", lead="Find quick answers to the most common questions about FestHey. Can't find what you're looking for? Reach out to us!", sid='faq'):
+    """Shared FAQ: question list + phone chat on desktop, accordion below 1025px. Used on every page."""
+    return f'''  <!-- ============ FAQ ============ -->
+  <section class="sec faq" id="{sid}">
+    <span class="grain" aria-hidden="true"></span>
+    <div class="wrap faq-grid">
+      <div class="faq-head">
+        <p class="eyebrow"><span></span>FAQs</p>
+        <h2>{h2}</h2>
+        <p class="lead faq-p">{lead}</p>
+      </div>
+      <div class="faq-list">
+        {''.join(qa(i, q) for i, q in enumerate(items))}
+        <a class="btn btn--ink faq-btn" href="{BASE}/help">Contact Us<span class="dot dot--still">{ic('msg')}</span></a>
+      </div>
+      <div class="phone-wrap" aria-hidden="true">
+        <div class="chat" style="left:{sx0/PH['w']*100:.2f}%;top:{sy0/PH['h']*100:.2f}%;width:{(sx1-sx0)/PH['w']*100:.2f}%;height:{(sy1-sy0)/PH['h']*100:.2f}%">
+          <div class="chat-head"><span class="chat-av"><img src="assets/img/favicon.svg" alt="" width="40" height="40"></span><b>FestHey</b></div>
+          <div class="chat-body">
+            <div class="bub bub-me">{e(items[0][0])}</div>
+            <div class="bub bub-bot">{items[0][1]}</div>
+          </div>
+          <div class="chat-bar"><span class="chat-input"></span><span class="chat-send">{ic('send','ic ic-s')}</span></div>
+        </div>
+        <img class="phone" src="assets/img/v2/phone2.png" alt="" width="{PH['w']}" height="{PH['h']}">
+      </div>
+    </div>
+  </section>
+
+'''
+
 page = HEAD.format(title='FestHey | Discover College Fests &amp; Events Across India') + NAV + f'''
 <main>
   <!-- ============ HERO ============ -->
@@ -245,33 +278,7 @@ page = HEAD.format(title='FestHey | Discover College Fests &amp; Events Across I
     </div>
   </section>
 
-  <!-- ============ FAQ ============ -->
-  <section class="sec faq" id="faq">
-    <span class="grain" aria-hidden="true"></span>
-    <div class="wrap faq-grid">
-      <div class="faq-head">
-        <p class="eyebrow"><span></span>FAQs</p>
-        <h2>QUESTIONS? WE'VE GOT ANSWERS.</h2>
-        <p class="lead faq-p">Find quick answers to the most common questions about FestHey. Can't find what you're looking for? Reach out to us!</p>
-      </div>
-      <div class="faq-list">
-        {''.join(qa(i, q) for i, q in enumerate(FAQ))}
-        <a class="btn btn--ink faq-btn" href="{BASE}/help">Contact Us<span class="dot dot--still">{ic('msg')}</span></a>
-      </div>
-      <div class="phone-wrap" aria-hidden="true">
-        <div class="chat" style="left:{sx0/PH['w']*100:.2f}%;top:{sy0/PH['h']*100:.2f}%;width:{(sx1-sx0)/PH['w']*100:.2f}%;height:{(sy1-sy0)/PH['h']*100:.2f}%">
-          <div class="chat-head"><span class="chat-av"><img src="assets/img/favicon.svg" alt="" width="40" height="40"></span><b>FestHey</b></div>
-          <div class="chat-body">
-            <div class="bub bub-me">{e(FAQ[0][0])}</div>
-            <div class="bub bub-bot">{FAQ[0][1]}</div>
-          </div>
-          <div class="chat-bar"><span class="chat-input"></span><span class="chat-send">{ic('send','ic ic-s')}</span></div>
-        </div>
-        <img class="phone" src="assets/img/v2/phone2.png" alt="" width="{PH['w']}" height="{PH['h']}">
-      </div>
-    </div>
-  </section>
-
+{faq_block(FAQ)}
   <!-- ============ JOIN THE PIT ============ -->
   <section class="pit" id="pit">
     <span class="grain" aria-hidden="true"></span>

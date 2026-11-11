@@ -37,20 +37,6 @@
   });
   $$('.evc').forEach(c => c.addEventListener('click', e => { if (e.target.closest('.evc-save')) e.preventDefault(); }));
 
-  // read more
-  const rm = $('.fd-readmore');
-  rm.addEventListener('click', () => { const o = $('.fd-read').classList.toggle('open'); rm.setAttribute('aria-expanded', o); rm.firstChild.textContent = o ? 'Read less' : 'Read more'; });
-
-  // FAQ accordion
-  // capture on the list so the landing page's chat handler in site.js never fires here
-  $('.fd-faq-list').addEventListener('click', ev => {
-    const btn = ev.target.closest('.qa-q'); if (!btn) return;
-    ev.stopPropagation();
-    const item = btn.closest('.qa'), on = item.classList.contains('is-on');
-    $$('.fd-faq .qa').forEach(o => { o.classList.remove('is-on'); $('.qa-q', o).setAttribute('aria-expanded', 'false'); });
-    if (!on) { item.classList.add('is-on'); btn.setAttribute('aria-expanded', 'true'); }
-  }, true);
-
   // phone dock appears once the facts bar scrolls away
   const dock = $('.fd-dock');
   new IntersectionObserver(([en]) => dock.classList.toggle('show', !en.isIntersecting && en.boundingClientRect.top < 0)).observe($('.fd-facts'));

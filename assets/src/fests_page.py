@@ -2,6 +2,8 @@
 """FestHey Fest listing page (fests.html), built on the landing-page design system.
 Run: python3 assets/src/fests_page.py"""
 import os, runpy, html
+import runpy as _rp
+_LU = _rp.run_path('/Users/durgesh/Desktop/WFT/festhey/assets/src/icons.py')
 ROOT = '/Users/durgesh/Desktop/WFT/festhey'
 B = runpy.run_path(os.path.join(ROOT, 'assets/src/build.py'))
 ic, btn, HEAD, NAV, FESTS, ADS, BASE = B['ic'], B['btn'], B['HEAD'], B['NAV'], B['FESTS'], B['ADS'], B['BASE']
@@ -21,7 +23,7 @@ ICX = {
  'clock': '<circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/>',
 }
 def icx(n, c='ic'):
-    return f'<svg class="{c}" viewBox="0 0 24 24" aria-hidden="true">{ICX[n]}</svg>'
+    return _LU['svg'](n, c)
 
 CATS = [('cultural', 'Cultural'), ('technical', 'Technical'), ('sports', 'Sports'), ('quiz', 'Quiz'), ('hackathon', 'Hackathon'), ('other', 'Other')]
 MONTH = {'Nov': 11, 'Dec': 12}

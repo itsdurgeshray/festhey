@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 """FestHey fest detail page (fest.html). Run: python3 assets/src/fest_page.py"""
 import os, runpy, html
+import runpy as _rp
+_LU = _rp.run_path('/Users/durgesh/Desktop/WFT/festhey/assets/src/icons.py')
 ROOT = '/Users/durgesh/Desktop/WFT/festhey'
 B = runpy.run_path(os.path.join(ROOT, 'assets/src/build.py'))
 L = runpy.run_path(os.path.join(ROOT, 'assets/src/fests_page.py'))
@@ -14,7 +16,7 @@ ICY = {
  'nav': '<path d="m3 11 19-9-9 19-2-8-8-2z"/>',
 }
 def icy(n, c='ic'):
-    return f'<svg class="{c}" viewBox="0 0 24 24" aria-hidden="true">{ICY[n]}</svg>'
+    return _LU['svg'](n, c)
 
 F = FESTS[0]  # 8th Mile Encore
 TABS = [('events', 'Events'), ('schedule', 'Schedule'), ('about', 'About'), ('venue', 'Venue'), ('gallery', 'Gallery'), ('faqs', 'FAQs')]
@@ -93,22 +95,27 @@ page = HEAD.format(title=f'{F[0]} | FestHey') + '<link rel="stylesheet" href="as
   <!-- ============ ABOUT + ORGANISER ============ -->
   <section class="wrap fd-sec fd-about" id="about">
     <div class="fd-about-copy">
-      <p class="eyebrow"><span></span>About</p>
-      <h2>ABOUT THE FEST</h2>
-      <div class="fd-read">
-        <p>8th Mile Encore brings together students from colleges across Bengaluru for two days of competitions, performances and late-night music. Expect dance battles, slam poetry, quizzes, robotics and a pro-night to close each day.</p>
-        <p class="fd-more">Register for as many events as you like, including several within the fest, as long as their schedules do not clash. Team events let you invite teammates by link before you check out, and confirmations and reminders go to your registered email.</p>
+      <p class="eyebrow"><span></span>About the fest</p>
+      <h2>TWO DAYS. {F[3]} EVENTS. <mark class="mark">ONE CAMPUS.</mark></h2>
+      <p class="fd-about-p">8th Mile Encore brings students from colleges across Bengaluru together for competitions, performances and late-night music. Register for as many events as you like, as long as their schedules don&rsquo;t clash.</p>
+      <div class="fd-expect">
+        <div class="fx fx--o"><span class="fx-ic">{icy('trophy')}</span><b>Competitions</b><small>Robotics, hackathons and quizzes with cash prizes</small></div>
+        <div class="fx fx--s"><span class="fx-ic">{icy('mic')}</span><b>Performances</b><small>Dance battles, slam poetry and stand-up sets</small></div>
+        <div class="fx fx--i"><span class="fx-ic">{icy('music')}</span><b>Pro-nights</b><small>Headline music to close both days</small></div>
+        <div class="fx fx--w"><span class="fx-ic">{icy('users')}</span><b>Team events</b><small>Invite your squad by link before checkout</small></div>
       </div>
-      <button class="fd-readmore" aria-expanded="false">Read more{icx('chev', 'ic ic-xs')}</button>
       <ul class="fd-highs">
-        <li><b>{F[3]}</b><span>Events</span></li><li><b>2</b><span>Days</span></li><li><b>₹0</b><span>Lowest entry</span></li><li><b>{F[4]}</b><span>Attending</span></li>
+        <span class="grain" aria-hidden="true"></span>
+        <li><b>{F[3]}</b><span>Events</span></li><li><b>2</b><span>Days</span></li><li><b>&#8377;0</b><span>Lowest entry</span></li><li><b>2</b><span>Pro-nights</span></li>
       </ul>
     </div>
     <aside class="fd-org">
-      <p class="eyebrow"><span></span>Organised by</p>
-      <div class="fd-org-top"><span class="fd-org-av">RV</span><span><b>R V College of Engineering</b><small>{icx('pin', 'ic ic-xs')}Bengaluru, Karnataka</small></span></div>
-      <p class="fd-org-p">Questions about an event, refunds or teams? The organising college handles them directly.</p>
-      <div class="fd-org-cta">{btn('Contact Organiser', BASE + '/help', 'ink', 'sm')}<a class="fd-link" href="{BASE}/colleges">View college{ic('arrow', 'ic ic-xs')}</a></div>
+      <div class="fd-org-ph"><img src="assets/img/fests/gallery-stage.jpg" alt="" width="1280" height="720"><span class="chip chip--sun">Host college</span></div>
+      <div class="fd-org-in">
+        <div class="fd-org-top"><span class="fd-org-av">RV</span><span><b>R V College of Engineering</b><small>{icx('pin', 'ic ic-xs')}Bengaluru, Karnataka</small></span></div>
+        <p class="fd-org-p">Questions about an event, refunds or teams? The organising college handles them directly.</p>
+        <div class="fd-org-cta">{btn('Contact Organiser', BASE + '/help', 'ink', 'sm')}<a class="fd-link" href="{BASE}/colleges">View college{ic('arrow', 'ic ic-xs')}</a></div>
+      </div>
     </aside>
   </section>
 
@@ -131,13 +138,7 @@ page = HEAD.format(title=f'{F[0]} | FestHey') + '<link rel="stylesheet" href="as
   </section>
 
   <!-- ============ FAQS ============ -->
-  <section class="fd-faq" id="faqs">
-    <span class="grain" aria-hidden="true"></span>
-    <div class="wrap fd-faq-in">
-      <div><p class="eyebrow eyebrow--ink"><span></span>FAQs</p><h2>BEFORE YOU REGISTER</h2></div>
-      <div class="faq-list fd-faq-list">{''.join(qa(i, q) for i, q in enumerate([FAQ[1], FAQ[2], FAQ[3], FAQ[6]]))}</div>
-    </div>
-  </section>
+{B['faq_block']([FAQ[1], FAQ[2], FAQ[3], FAQ[6]], 'BEFORE YOU REGISTER', 'Quick answers about registering, teams and refunds for this fest. Still stuck? Our team replies within a day.', 'faqs')}
 
   <!-- ============ SIMILAR ============ -->
   <section class="wrap fd-sec" id="similar">

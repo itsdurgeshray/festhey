@@ -2,6 +2,8 @@
 """FestHey app pages: event.html, team.html, blog.html, article.html (+ 3 modals).
 Run: python3 assets/src/app_pages.py"""
 import os, runpy, html, random
+import runpy as _rp
+_LU = _rp.run_path('/Users/durgesh/Desktop/WFT/festhey/assets/src/icons.py')
 ROOT = '/Users/durgesh/Desktop/WFT/festhey'
 B = runpy.run_path(os.path.join(ROOT, 'assets/src/build.py'))
 L = runpy.run_path(os.path.join(ROOT, 'assets/src/fests_page.py'))
@@ -9,27 +11,8 @@ FP = runpy.run_path(os.path.join(ROOT, 'assets/src/fest_page.py'))
 ic, btn, HEAD, NAV, EVENTS, BASE, evc, AV = B['ic'], B['btn'], B['HEAD'], B['NAV'], B['EVENTS'], B['BASE'], B['evc'], B['AV']
 icx, FOOT, PIT, icy = L['icx'], L['FOOT'], L['PIT'], FP['icy']
 e = html.escape
-X = {
- 'close': '<path d="M18 6 6 18M6 6l12 12"/>',
- 'users': '<path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.9M16 3.1a4 4 0 0 1 0 7.8"/>',
- 'userplus': '<path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M19 8v6M22 11h-6"/>',
- 'trophy': '<path d="M6 9H4a2 2 0 0 1 0-4h2M18 9h2a2 2 0 0 0 0-4h-2M4 22h16M10 15v7M14 15v7M18 2H6v7a6 6 0 0 0 12 0Z"/>',
- 'star': '<path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/>',
- 'wifi': '<path d="M5 13a10 10 0 0 1 14 0M8.5 16.5a5 5 0 0 1 7 0M2 8.8a15 15 0 0 1 20 0"/><circle cx="12" cy="20" r="1"/>',
- 'coffee': '<path d="M17 8h1a4 4 0 0 1 0 8h-1M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z"/><path d="M6 2v2M10 2v2M14 2v2"/>',
- 'drop': '<path d="M12 22a7 7 0 0 0 7-7c0-2-1-3.9-3-5.5S12.5 5.5 12 2.5C11.5 5.5 10 7.9 8 9.5S5 13 5 15a7 7 0 0 0 7 7Z"/>',
- 'snow': '<path d="M2 12h20M12 2v20M4.9 4.9l14.2 14.2M19.1 4.9 4.9 19.1"/>',
- 'zap': '<path d="M13 2 3 14h9l-1 8 10-12h-9z"/>',
- 'copy': '<rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>',
- 'download': '<path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/>',
- 'info': '<circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/>',
- 'wa': '<path d="M3 21l1.6-4.7A9 9 0 1 1 8 20Z"/><path d="M9 10c0 3 2 5 5 5l1.5-1.5-2-1-1 1c-1 0-2.5-1.5-2.5-2.5l1-1-1-2Z"/>',
- 'shield': '<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/>',
- 'mail': '<rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-10 6L2 7"/>',
- 'book': '<path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2zM22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>',
-}
 def ix(n, c='ic'):
-    return f'<svg class="{c}" viewBox="0 0 24 24" aria-hidden="true">{X[n]}</svg>'
+    return _LU['svg'](n, c)
 def css(*f):
     return ''.join(f'<link rel="stylesheet" href="assets/{x}.css">' for x in f) + '\n'
 SCRIPTS = '''<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
@@ -55,6 +38,23 @@ EV = dict(name='Line Follower Sprint', fest='Brain Wars', fest_href='fest.html',
 ELIG = ['Open to undergraduate students of any college in India.', 'A valid college ID card is mandatory for on-campus entry.', 'Teams of exactly 3 members; cross-college teams are allowed.', 'All participants must follow the event code of conduct.']
 RULES = ['Robots must be autonomous; no remote control during the run.', 'Maximum robot size 25 by 25 cm, any power source up to 12 V.', 'Each team gets two timed runs; the best run counts.', 'Judges’ decision on track faults is final.']
 
+# ======================= shared bits =======================
+import math
+def rosette(label, cls=''):
+    pts = []
+    for k in range(32):
+        r = 50 if k % 2 == 0 else 43
+        a = math.pi * 2 * k / 32
+        pts.append(f'{50 + r * math.cos(a):.1f}% {50 + r * math.sin(a):.1f}%')
+    return f'<span class="ros {cls}" aria-hidden="true"><span class="ros-t ros-t1"></span><span class="ros-t ros-t2"></span><span class="ros-b" style="clip-path:polygon({",".join(pts)})"></span><span class="ros-in">{label}</span></span>'
+def tiles(items, cls=''):
+    return f'<div class="tiles {cls}">' + ''.join(f'<div class="tile"><span class="tile-ic">{ix(i, "ic ic-s")}</span><span><small>{l}</small><b>{v}</b></span></div>' for i, l, v in items) + '</div>'
+def avatar(i):
+    return f'assets/img/av{i % 4 + 1}.jpg'
+FEE_TILES = [('users', 'Team size', f"{EV['team']} members"), ('rupee', 'Fee', f"&#8377;{EV['fee']} / member"), ('cal', 'Event day', EV['date'])]
+CONFETTI = ''.join(f'<i style="left:{x}%;top:{y}%;transform:rotate({r}deg)" class="cf cf{c}"></i>' for x, y, r, c in
+                   [(4, 18, 20, 1), (12, 70, -30, 2), (22, 30, 60, 3), (78, 22, -14, 1), (88, 64, 40, 2), (94, 30, -50, 3), (48, 8, 12, 2), (62, 86, -24, 1), (34, 88, 34, 3), (70, 46, 70, 3)])
+
 # ======================= modals =======================
 AD = f'''
 <div class="modal" id="m-ad" role="dialog" aria-modal="true" aria-labelledby="m-ad-h" hidden>
@@ -62,14 +62,13 @@ AD = f'''
   <div class="modal-card modal-ad">
     <img src="assets/img/fests/ad-fest-music.jpg" alt="" width="1280" height="720">
     <span class="modal-ad-shade"></span>
-    <span class="chip chip--ink m-ad-tag">AD</span>
-    <span class="chip chip--light m-ad-date">Three nights, Dec 2026</span>
+    <div class="m-ad-chips"><span class="chip chip--ink">AD</span><span class="chip chip--light">Three nights, Dec 2026</span></div>
     <button class="modal-x modal-x--glass" data-close aria-label="Close">{ix('close')}</button>
     <div class="m-ad-body">
-      <span class="chip chip--sun">{icx('pin', 'ic ic-xs')}B M S College of Engineering</span>
+      <span class="chip chip--sun">{ix('pin', 'ic ic-xs')}B M S College of Engineering</span>
       <h2 id="m-ad-h">Utsav Winter Edition</h2>
-      <p>Three Nights of Music and Dance at BMSCE</p>
-      <div class="m-ad-cta"><button class="btn btn--light btn--sm" data-close>Maybe later<span class="dot dot--still">{ix('close')}</span></button>{btn('Check it out', BASE + '/fests/utsav-winter-edition', 'primary', 'sm')}</div>
+      <p>Three nights of music and dance. 7+ events, stand-ups and a headline pro-night.</p>
+      <a class="btn btn--primary btn--block" href="fest.html">Check it out<span class="dot">{ic('arrow')}</span></a>
     </div>
   </div>
 </div>'''
@@ -79,16 +78,14 @@ CREATE = f'''
   <div class="modal-back" data-close></div>
   <form class="modal-card modal-form" action="team.html" novalidate>
     <button type="button" class="modal-x" data-close aria-label="Close">{ix('close')}</button>
-    <p class="eyebrow"><span></span>Step 1 of 2 &middot; Create your team</p>
+    <p class="eyebrow"><span></span>Step 1 of 2</p>
     <h2 id="m-team-h">NAME YOUR SQUAD</h2>
-    <p class="m-sub">You are registering as a team for <b>{EV['name']}</b>. Name your team, then share the invite link with your members.</p>
-    <div class="m-sum">
-      <span><small>Team size</small><b>{EV['team']} members</b></span><span><small>Fee</small><b>&#8377;{EV['fee']}.00 / Member</b></span><span><small>Event day</small><b>{EV['date']}</b></span>
-    </div>
+    <p class="m-sub">You&rsquo;re registering for <b>{EV['name']}</b>. Pick a team name, then invite your members with a link.</p>
+    {tiles(FEE_TILES, 'm-tiles')}
     <label class="m-label" for="tn">Team name</label>
-    <label class="fld">{ix('users')}<input id="tn" name="team" placeholder="e.g. SpiderTrack" maxlength="24" autocomplete="off" required></label>
-    <p class="m-hint">{ix('info', 'ic ic-xs')}<span>Team names can&rsquo;t be changed later. <b class="m-left">24</b> characters left.</span></p>
-    <div class="m-actions"><button type="button" class="btn btn--light" data-close>Cancel<span class="dot dot--still">{ix('close')}</span></button><button class="btn btn--ink" type="submit">Create Team<span class="dot">{ic('arrow')}</span></button></div>
+    <label class="fld">{ix('users')}<input id="tn" name="team" placeholder="e.g. SpiderTrack" maxlength="24" autocomplete="off" required><span class="fld-n"><b class="m-left">24</b></span></label>
+    <p class="m-hint">{ix('lock', 'ic ic-xs')}<span>Team names are locked once created.</span></p>
+    <button class="btn btn--primary btn--block m-go" type="submit">Create Team<span class="dot">{ic('arrow')}</span></button>
   </form>
 </div>'''
 
@@ -96,25 +93,43 @@ INVITE = f'''
 <div class="modal" id="m-invite" role="dialog" aria-modal="true" aria-labelledby="m-inv-h" hidden>
   <div class="modal-back" data-close></div>
   <div class="modal-card modal-invite">
-    <button class="modal-x" data-close aria-label="Close">{ix('close')}</button>
-    <span class="m-inv-ic">{ix('mail')}<span>{ix('userplus', 'ic ic-xs')}</span></span>
-    <p class="eyebrow eyebrow--c"><span></span>Team invitation</p>
-    <h2 id="m-inv-h">YOU&rsquo;RE INVITED!</h2>
-    <p class="m-sub"><b>Rohan Verma</b> invited you to join their team for <b>{EV['name']}</b> at {EV['fest']}.</p>
-    <div class="m-inv-team"><span class="m-inv-av">ST</span><span><b>SpiderTrack</b><span class="chip chip--sun">{EV['short']}</span></span><span class="m-inv-fee"><b>&#8377;{EV['fee']}</b><small>/ Member</small></span></div>
-    <div class="m-inv-slots"><span>{ix('users')}<b>2 of {EV['team']} spots filled</b></span><span class="bar"><i style="width:66%"></i></span></div>
-    <a class="btn btn--ink btn--block" href="team.html?state=complete">Join Team<span class="dot">{ix('userplus', 'ic')}</span></a>
-    <p class="m-secure">{ix('shield', 'ic ic-xs')}Secure checkout. Pay your share after joining.</p>
+    <div class="inv-top">
+      <span class="grain" aria-hidden="true"></span>
+      <button class="modal-x modal-x--glass" data-close aria-label="Close">{ix('close')}</button>
+      <div class="inv-from"><img src="{avatar(0)}" alt="" width="40" height="40"><span><b>Rohan Verma</b> invited you to join</span></div>
+      <h2 id="m-inv-h">SPIDERTRACK</h2>
+      <span class="chip chip--sun">{ix('ticket', 'ic ic-xs')}{EV['name']} &middot; {EV['fest']}</span>
+    </div>
+    <div class="inv-cut" aria-hidden="true"></div>
+    <div class="inv-body">
+      <div class="inv-squad">
+        <span class="inv-sl"><img src="{avatar(0)}" alt="" width="56" height="56"><small>Rohan</small></span>
+        <span class="inv-sl"><img src="{avatar(1)}" alt="" width="56" height="56"><small>Sai</small></span>
+        <span class="inv-sl inv-you"><span>{ix('plus')}</span><small>You</small></span>
+      </div>
+      <p class="inv-left">1 spot left in this team</p>
+      {tiles([('cal', 'Event day', EV['date']), ('rupee', 'Your share', f"&#8377;{EV['fee']}")], 'm-tiles m-tiles--2')}
+      <a class="btn btn--primary btn--block" href="team.html?state=complete">Join SpiderTrack<span class="dot">{ic('arrow')}</span></a>
+      <p class="m-secure">{ix('shield', 'ic ic-xs')}You&rsquo;ll pay your share securely after joining</p>
+    </div>
   </div>
 </div>'''
 MODALS = AD + CREATE + INVITE
 
 # ======================= event page =======================
 others = ''.join(evc(t, i) for i, t in enumerate(EVENTS[1:7]))
-REVIEWS = [('Ananya K', 'BMSCE', 5, 'Track was clean and the judges explained every fault. Second run timing felt fair.'),
-           ('Mohit S', 'RVCE', 5, 'Great crowd, quick check-in. Bring spare batteries; the queue for charging was long.'),
-           ('Divya R', 'PES University', 4, 'Loved the format. Wish the practice track had opened an hour earlier.')]
-reviews = ''.join(f'''<article class="rv"><div class="rv-top"><span class="rv-av">{n.split()[0][0]}{n.split()[1][0]}</span><span><b>{n}</b><small>{c}, Brain Wars 2025</small></span><span class="rv-score">{ix('star', 'ic ic-xs')}{s}.0</span></div><p>{t}</p></article>''' for n, c, s, t in REVIEWS)
+REVIEWS = [('Ananya Kulkarni', 'BMSCE', 5, 'Track was clean and the judges explained every fault on the spot. Second-run timing felt completely fair, and the crowd at the finish line was unreal.', 'Winner, 2025'),
+           ('Mohit Sharma', 'RVCE', 5, 'Quick check-in and a well-run pit. Bring spare batteries; the charging queue got long before the finals.', 'Finalist'),
+           ('Divya Rao', 'PES University', 4, 'Loved the surprise section. Wish the practice track had opened an hour earlier.', 'Participant')]
+def stars(n):
+    return '<span class="stars" aria-label="' + str(n) + ' out of 5">' + ''.join(ix('star', 'ic ic-xs' + (' off' if k >= n else '')) for k in range(5)) + '</span>'
+reviews = ''.join(f'''<article class="rv{' rv--big' if k == 0 else ''}"><span class="rv-q">{ix('quote')}</span>{stars(s)}<p>{t}</p><div class="rv-by"><img src="{avatar(k + 1)}" alt="" width="40" height="40"><span><b>{n}</b><small>{c}</small></span><span class="chip chip--light">{tag}</span></div></article>''' for k, (n, c, s, t, tag) in enumerate(REVIEWS))
+DIST = [(5, 78), (4, 16), (3, 4), (2, 2), (1, 0)]
+dist = ''.join(f'<li><span>{n}</span>{ix("star", "ic ic-xs")}<span class="bar"><i style="width:{p}%"></i></span><small>{p}%</small></li>' for n, p in DIST)
+EV_FAQ = [('Can I register alone for a team event?', 'Create a team with just yourself, then share the invite link. Your spot is held once you pay your share, and the team locks when it is full.'),
+          ('What if a teammate never joins?', 'If your team is not full by the registration deadline, unpaid shares are released and paid members are refunded to their original payment method.'),
+          ('Can members be from different colleges?', 'Yes. Cross-college teams are welcome; every member needs their own valid college ID at the venue.'),
+          ('Is the fee refundable?', 'Fees are refundable up to 48 hours before the event. After that the organiser&rsquo;s refund policy applies.')]
 
 ev_page = HEAD.format(title=f"{EV['name']} | {EV['fest']} | FestHey") + css('fests', 'fest', 'app') + NAV + f'''
 <main class="fd ev" data-state="open">
@@ -145,7 +160,7 @@ ev_page = HEAD.format(title=f"{EV['name']} | {EV['fest']} | FestHey") + css('fes
       <a class="btn btn--sun fd-cta st-pending" href="team.html">Complete Registration<span class="dot">{ic('arrow')}</span></a>
       <a class="btn btn--ink fd-cta st-done" href="team.html?state=complete">View Ticket<span class="dot">{ic('arrow')}</span></a>
     </div>
-    <p class="st-banner st-pending">{ix('info', 'ic ic-s')}Your team <b>SpiderTrack</b> has 1 of 3 members. Invite your squad and pay before Dec 26 to lock your spot.</p>
+    <p class="st-banner st-pending">{ix('info', 'ic ic-s')}<span>Your team <b>SpiderTrack</b> has 1 of 3 members. Invite your squad and pay before Dec 26 to lock your spot.</span></p>
   </div>
 
   <section class="wrap fd-sec ev-grid">
@@ -153,7 +168,7 @@ ev_page = HEAD.format(title=f"{EV['name']} | {EV['fest']} | FestHey") + css('fes
       <p class="eyebrow"><span></span>About the event</p>
       <h2>BUILD IT. RACE IT.</h2>
       <p class="ev-lead">Bring an autonomous robot that follows a black line through curves, crossings and a surprise section. The fastest clean run takes the trophy.</p>
-      <div class="chips ev-amen"><span class="chip">{ix('coffee', 'ic ic-s')}Breakfast</span><span class="chip">{ix('wifi', 'ic ic-s')}Free Wi-Fi</span><span class="chip">{ix('drop', 'ic ic-s')}Drinking water</span><span class="chip">{ix('snow', 'ic ic-s')}Air-conditioned pit area</span><span class="chip">{ix('zap', 'ic ic-s')}Charging points</span></div>
+      <div class="chips ev-amen"><span class="chip">{ix('coffee', 'ic ic-s')}Breakfast</span><span class="chip">{ix('wifi', 'ic ic-s')}Free Wi-Fi</span><span class="chip">{ix('drop', 'ic ic-s')}Drinking water</span><span class="chip">{ix('snow', 'ic ic-s')}Air-conditioned pit area</span><span class="chip">{ix('plug', 'ic ic-s')}Charging points</span></div>
       <div class="ev-two">
         <div><h3 class="ev-h">Eligibility</h3>{checks(ELIG)}</div>
         <div><h3 class="ev-h">Rules</h3>{checks(RULES)}</div>
@@ -161,13 +176,20 @@ ev_page = HEAD.format(title=f"{EV['name']} | {EV['fest']} | FestHey") + css('fes
     </div>
     <aside class="ev-side">
       <div class="ev-fee">
-        <small>Registration fee</small>
-        <b>&#8377;{EV['fee']}.00</b><span>per team member</span>
-        <div class="ev-fee-rows"><span>{icx('pin', 'ic ic-xs')}{EV['venue']}</span><span>{icy('cal', 'ic ic-xs')}{EV['date']}</span><span>{icx('clock', 'ic ic-xs')}{EV['time']}</span></div>
-        <button class="btn btn--primary btn--block st-open" data-open="m-team">Register as a team<span class="dot">{ic('arrow')}</span></button>
-        <a class="btn btn--sun btn--block st-pending" href="team.html">Complete Registration<span class="dot">{ic('arrow')}</span></a>
-        <a class="btn btn--ink btn--block st-done" href="team.html?state=complete">View Ticket<span class="dot">{ic('arrow')}</span></a>
-        <button class="ev-invite-demo" data-open="m-invite">Got an invite link? Join a team</button>
+        <div class="ev-fee-top">
+          <span class="chip chip--sun">{ix('hourglass', 'ic ic-xs')}Closes {EV['deadline']}</span>
+          <small>Registration fee</small>
+          <p class="ev-price"><b>&#8377;{EV['fee']}</b><span>per member</span></p>
+          <p class="ev-team">{ix('users', 'ic ic-xs')}Team of {EV['team']} &middot; &#8377;{EV['fee'] * EV['team']:,} for the full team</p>
+        </div>
+        <div class="ev-fee-cut" aria-hidden="true"></div>
+        <div class="ev-fee-bot">
+          <ul class="ev-fee-rows"><li><span class="tile-ic">{ix('pin', 'ic ic-xs')}</span>{EV['venue']}</li><li><span class="tile-ic">{ix('cal', 'ic ic-xs')}</span>{EV['date']}</li><li><span class="tile-ic">{ix('clock', 'ic ic-xs')}</span>{EV['time']}</li></ul>
+          <button class="btn btn--primary btn--block st-open" data-open="m-team">Register as a team<span class="dot">{ic('arrow')}</span></button>
+          <a class="btn btn--sun btn--block st-pending" href="team.html">Complete Registration<span class="dot">{ic('arrow')}</span></a>
+          <a class="btn btn--ink btn--block st-done" href="team.html?state=complete">View Ticket<span class="dot">{ic('arrow')}</span></a>
+          <button class="ev-invite-demo" data-open="m-invite">{ix('link', 'ic ic-xs')}Got an invite link? Join a team</button>
+        </div>
       </div>
       <a class="ev-fest" href="{EV['fest_href']}"><img src="assets/img/fests/gallery-stage.jpg" alt="" width="1280" height="720"><span><small>Part of</small><b>{EV['fest']}</b><em class="chip chip--sun">Dec 30 to Dec 31</em></span>{ic('arrow')}</a>
       <div class="ev-org"><span class="fd-org-av">MS</span><span><small>Organised by</small><b>{EV['college']}</b></span></div>
@@ -176,18 +198,28 @@ ev_page = HEAD.format(title=f"{EV['name']} | {EV['fest']} | FestHey") + css('fes
 
   <section class="ev-prize" id="prizes">
     <span class="grain" aria-hidden="true"></span>
+    <span class="ev-rays" aria-hidden="true"></span>
+    <div class="ev-conf" aria-hidden="true">{CONFETTI}</div>
+    <div class="ev-tape" aria-hidden="true"><div>{'<span>Prize pool &#8377;75,000</span><span>&#9733;</span><span>Trophies</span><span>&#9733;</span><span>Internship interviews</span><span>&#9733;</span>' * 4}</div></div>
     <div class="wrap ev-prize-in">
-      <div class="fd-head ev-prize-head"><div><p class="eyebrow eyebrow--ink"><span></span>Prize pool</p><h2>&#8377;75,000 UP FOR GRABS</h2></div><p class="ev-prize-note">The winning team takes the grand prize; runners-up and third place are rewarded too. Terms and conditions apply.</p></div>
-      <div class="podium">
-        <div class="pod pod--2"><span class="pod-rank">2</span><small>Runner up</small><b>&#8377;15,000</b><p>Merch kit and cloud credits</p></div>
-        <div class="pod pod--1"><span class="pod-ic">{ix('trophy')}</span><small>Grand prize</small><b>&#8377;50,000</b><p>Golden trophy and internship interviews</p></div>
-        <div class="pod pod--3"><span class="pod-rank">3</span><small>Third place</small><b>&#8377;10,000</b><p>Tech goodies and certificates</p></div>
+      <div class="ev-prize-head"><p class="eyebrow eyebrow--ink"><span></span>Prize pool</p><h2>RACE FOR <mark class="mark mark--snow">&#8377;75,000</mark></h2></div>
+      <div class="prizes">
+        <div class="prz prz--2">{rosette('2<sup>nd</sup>', 'ros--snow')}<small>Runner up</small><b>&#8377;15,000</b><p>Merch kit and cloud credits</p></div>
+        <div class="prz prz--1">{rosette(ix('crown'), 'ros--orange')}<small>Grand prize</small><b>&#8377;50,000</b><p>Golden trophy and internship interviews</p><span class="prz-stamp">Winner takes all</span></div>
+        <div class="prz prz--3">{rosette('3<sup>rd</sup>', 'ros--snow')}<small>Third place</small><b>&#8377;10,000</b><p>Tech goodies and certificates</p></div>
       </div>
+      <p class="ev-prize-note">{ix('medal', 'ic ic-xs')}Every finisher gets a participation certificate. Terms and conditions apply.</p>
     </div>
   </section>
 
-  <section class="wrap fd-sec">
-    <div class="fd-head"><div><p class="eyebrow"><span></span>From last year</p><h2>WHAT TEAMS SAID</h2></div><span class="ev-rating"><b>4.7</b>{ix('star', 'ic ic-s')}<small>from 38 reviews</small></span></div>
+  <section class="wrap fd-sec ev-rv">
+    <div class="rv-sum">
+      <p class="eyebrow"><span></span>Reviews</p>
+      <h2>WHAT TEAMS SAID</h2>
+      <div class="rv-score-big"><b>4.7</b><span>{stars(5)}<small>38 reviews from 2025</small></span></div>
+      <ul class="rv-dist">{dist}</ul>
+      <a class="btn btn--ink btn--block" href="#">Add your review<span class="dot">{ix('star')}</span></a>
+    </div>
     <div class="rv-grid">{reviews}</div>
   </section>
 
@@ -195,6 +227,7 @@ ev_page = HEAD.format(title=f"{EV['name']} | {EV['fest']} | FestHey") + css('fes
     <div class="wrap"><div class="fd-head"><div><p class="eyebrow"><span></span>Also at {EV['fest']}</p><h2>MORE EVENTS</h2></div>{btn('View Fest', EV['fest_href'], 'ink', 'sm')}</div></div>
     <div class="ev-track"><div class="ev-row v-ticket">{others}</div></div>
   </section>
+{B['faq_block'](EV_FAQ, 'TEAM EVENT QUESTIONS', 'Everything about teams, invites and refunds for this event. Still unsure? Our team replies within a day.', 'faq')}
 </main>
 <div class="fd-dock st-open"><span><small>&#8377;{EV['fee']}.00 / Member</small><b>Closes {EV['deadline']}</b></span><button class="btn btn--primary btn--sm" data-open="m-team">Register<span class="dot">{ic('arrow')}</span></button></div>
 <div class="fd-toast" role="status" aria-live="polite"></div>
@@ -215,75 +248,86 @@ def qr_svg(seed=7, n=25):
                 cells.append(f'<rect x="{xx}" y="{yy}" width="1" height="1"/>')
     return f'<svg class="qr" viewBox="-2 -2 {n+4} {n+4}" role="img" aria-label="Entry QR code"><rect x="-2" y="-2" width="{n+4}" height="{n+4}" fill="#fff"/><g fill="#140A04">{"".join(cells)}</g>{finder(0,0)}{finder(n-7,0)}{finder(0,n-7)}</svg>'
 
-MEM = [('RV', 'Rohan Verma', 'Team captain', True), ('SV', 'Sai Vani', 'Member', False), ('RG', 'Reshma Gouri', 'Member', False)]
-slots = ''.join(f'''<div class="slot-c {'is-you' if you else ''} {'' if i == 0 else 'st-done'}"><span class="slot-av">{a}</span><b>{n}</b><small>{r}</small>{'<span class="chip chip--sun slot-you">You</span>' if you else ''}</div>''' for i, (a, n, r, you) in enumerate(MEM))
-slots += ''.join(f'<div class="slot-c slot-empty st-pending"><span class="slot-av">{ix("userplus")}</span><b>Waiting for member {i}</b><small>Share the invite link</small></div>' for i in (2, 3))
-INFO = [(icy('ticket', 'ic ic-s'), 'Event', EV['name']), (ix('book', 'ic ic-s'), 'College', EV['short']), (icx('pin', 'ic ic-s'), 'Venue', EV['venue']), (icy('cal', 'ic ic-s'), 'Date', EV['date'])]
-info = ''.join(f'<div class="ti"><span class="fd-fact-ic">{a}</span><span><small>{b}</small><b>{c}</b></span></div>' for a, b, c in INFO)
+MEM = [('Rohan Verma', 'Captain', 0), ('Sai Vani', 'Member', 1), ('Reshma Gouri', 'Member', 2)]
+def seat(k):
+    n, r, a = MEM[k]
+    you = '<span class="seat-you">You</span>' if k == 0 else ''
+    paid = f'<span class="seat-ok">{ix("check", "ic ic-xs")}</span>'
+    filled = f'<div class="seat{" st-done" if k else ""}"><span class="seat-ph"><img src="{avatar(a)}" alt="" width="96" height="96">{paid}</span><b>{n}</b><small>{r}</small>{you}</div>'
+    empty = '' if k == 0 else f'<button class="seat seat--open st-pending" data-copy="https://festhey.in/t/spidertrack-4kq9"><span class="seat-ph">{ix("plus")}</span><b>Spot {k + 1}</b><small>Tap to copy invite</small></button>'
+    return filled + empty
 link = 'festhey.in/t/spidertrack-4kq9'
+STEPS = [('Team created', 'SpiderTrack is yours. The name is locked.', 'done'),
+         ('Invite your squad', 'Share the link. 2 spots are still open.', 'now'),
+         ('Everyone pays their share', '&#8377;349 each, before Dec 26.', 'next'),
+         ('Get your entry pass', 'A QR pass for each member, sent by email.', 'next')]
+steps = ''.join(f'<li class="step step--{st}"><span class="step-n">{ix("check", "ic ic-xs") if st == "done" else i + 1}</span><span><b>{t}</b><small>{d}</small></span></li>' for i, (t, d, st) in enumerate(STEPS))
+
 team_page = HEAD.format(title='SpiderTrack | Team | FestHey') + css('fests', 'fest', 'app') + NAV + f'''
 <main class="tm" data-state="pending">
   <section class="tm-hero">
     <span class="grain" aria-hidden="true"></span>
     <div class="wrap tm-hero-in">
-      <div>
-        {crumb((EV['fest'], EV['fest_href']), (EV['name'], 'event.html'), ('Team', None))}
-        <div class="tm-name"><span class="tm-badge">{ix('zap')}</span><h1 class="hero-h">SPIDERTRACK</h1></div>
-        <p class="tm-sub st-pending">Invite 2 more members and pay to confirm your team.</p>
-        <p class="tm-sub st-done">You&rsquo;re in. Show the QR at the venue on {EV['date']}.</p>
+      {crumb((EV['fest'], EV['fest_href']), (EV['name'], 'event.html'), ('Your team', None))}
+      <div class="tm-title">
+        <span class="chip chip--sun st-pending">{ix('hourglass', 'ic ic-xs')}Waiting for 2 members</span>
+        <span class="chip chip--sun st-done">{ix('okc', 'ic ic-xs')}Registration confirmed</span>
+        <h1 class="hero-h">SPIDERTRACK</h1>
+        <p class="tm-sub">{ix('ticket', 'ic ic-xs')}{EV['name']} &middot; {EV['fest']} &middot; {EV['date']}</p>
       </div>
-      <div class="tm-count">
-        <span class="chip chip--sun tm-flag st-pending">2 spots left</span><span class="chip chip--sun tm-flag st-done">Confirmed</span>
-        <span class="tm-count-ic">{ix('users')}</span>
-        <span><b><span class="st-pending">1</span><span class="st-done">3</span> / 3</b><small>spots filled</small></span>
-        <span class="bar"><i></i></span>
+      <div class="squad">
+        <div class="squad-h"><b><span class="st-pending">1</span><span class="st-done">3</span> of 3 joined</b><span class="st-pending">2 spots left</span><span class="st-done">Team locked</span></div>
+        <div class="seats">{''.join(seat(k) for k in range(3))}</div>
+        <span class="squad-bar"><i></i></span>
       </div>
     </div>
   </section>
 
   <section class="wrap tm-grid">
     <div class="tm-main">
-      <div class="tm-ticket st-done">
-        <div class="tm-qr">{qr_svg()}</div>
-        <div class="tm-ticket-body">
+      <div class="epass st-done">
+        <div class="epass-main">
           <p class="eyebrow"><span></span>Entry pass</p>
           <h2>SEE YOU AT THE TRACK</h2>
-          <dl><div><dt>Registration ID</dt><dd>FH-BW-26-4KQ9</dd></div><div><dt>Order ID</dt><dd>order_N7c2Xk91</dd></div><div><dt>Check-in</dt><dd>{EV['date']}, 8:30 AM</dd></div></dl>
+          {tiles([('hash' if False else 'ticket', 'Registration ID', 'FH-BW-26-4KQ9'), ('receipt', 'Order ID', 'order_N7c2Xk91'), ('clock', 'Check-in', f"{EV['date']}, 8:30 AM"), ('pin', 'Venue', EV['venue'])], 'epass-tiles')}
+        </div>
+        <div class="epass-stub"><div class="tm-qr">{qr_svg()}</div><small>Show at the gate</small></div>
+      </div>
+
+      <div class="card st-pending">
+        <div class="card-h"><h3 class="ev-h">Your next steps</h3><span class="chip chip--sun">Step 2 of 4</span></div>
+        <ol class="steps">{steps}</ol>
+        <div class="invite">
+          <div class="copy"><span class="copy-ic">{ix('link', 'ic ic-s')}</span><span class="copy-url">{link}</span><button class="btn btn--ink btn--sm copy-btn" data-copy="https://{link}">Copy<span class="dot dot--still">{ix('copy')}</span></button></div>
+          <div class="invite-cta"><a class="btn btn--wa" href="https://wa.me/?text=Join%20my%20team%20SpiderTrack%20on%20FestHey%3A%20https%3A%2F%2F{link}" target="_blank" rel="noopener">Share on WhatsApp<span class="dot dot--still">{ix('wa')}</span></a><button class="btn btn--light" data-open="m-invite">Preview invite<span class="dot dot--still">{ix('eye')}</span></button></div>
         </div>
       </div>
 
-      <div class="tm-block">
-        <div class="tm-block-h"><h3 class="ev-h">Your team</h3><span class="tm-step st-pending">Step 2 of 2 &middot; Fill your team</span></div>
-        <div class="slots">{slots}</div>
+      <div class="card ev-card">
+        <img src="assets/img/fests/{EV['img']}.jpg" alt="" width="1280" height="720">
+        <div class="ev-card-in">
+          <div class="card-h"><div><small class="ev-card-k">The event</small><h3 class="ev-h">{EV['name']}</h3></div>{btn('Event page', 'event.html', 'light', 'sm')}</div>
+          {tiles([('school', 'College', EV['short']), ('pin', 'Venue', EV['venue']), ('cal', 'Date', EV['date']), ('clock', 'Time', EV['time'])], 'tiles--4')}
+        </div>
       </div>
-
-      <div class="tm-block"><h3 class="ev-h">Event information</h3><div class="ti-grid">{info}</div></div>
-      <div class="ev-two tm-block"><div><h3 class="ev-h">Eligibility</h3>{checks(ELIG)}</div><div><h3 class="ev-h">Rules</h3>{checks(RULES)}</div></div>
+      <div class="ev-two"><div><h3 class="ev-h">Eligibility</h3>{checks(ELIG)}</div><div><h3 class="ev-h">Rules</h3>{checks(RULES)}</div></div>
     </div>
 
     <aside class="tm-side">
-      <div class="side-card st-pending">
-        <div class="side-h"><span class="side-ic">{ix('userplus', 'ic ic-s')}</span><b>Invite your squad</b></div>
-        <p class="side-p">Send this link to your teammates. It opens the invite and lets them join in one tap.</p>
-        <div class="copy"><span class="copy-url">{link}</span><button class="icon-btn icon-btn--sm copy-btn" aria-label="Copy invite link" data-copy="https://{link}">{ix('copy')}</button></div>
-        <a class="btn btn--wa btn--block" href="https://wa.me/?text=Join%20my%20team%20SpiderTrack%20on%20FestHey%3A%20https%3A%2F%2F{link}" target="_blank" rel="noopener">Share on WhatsApp<span class="dot">{ix('wa')}</span></a>
-        <button class="m-preview" data-open="m-invite">Preview what they&rsquo;ll see</button>
-      </div>
-
-      <div class="side-card">
-        <div class="side-h"><span class="side-ic">{icy('ticket', 'ic ic-s')}</span><b class="st-pending">Team fee summary</b><b class="st-done">Order summary</b><span class="side-fee"><b>&#8377;{EV['fee']}</b><small>/ Member</small></span></div>
+      <div class="pay">
+        <div class="pay-h"><span class="tile-ic">{ix('receipt', 'ic ic-s')}</span><b class="st-pending">Your share</b><b class="st-done">Order summary</b><span class="chip chip--light st-done">Paid</span></div>
+        <p class="pay-big st-pending"><b>&#8377;359.47</b><small>due by {EV['deadline']}</small></p>
         <dl class="sum">
-          <div><dt>Members joined</dt><dd><span class="st-pending">1</span><span class="st-done">3</span></dd></div>
-          <div><dt>Registration subtotal</dt><dd><span class="st-pending">&#8377;349.00</span><span class="st-done">&#8377;1,047.00</span></dd></div>
-          <div><dt>Convenience fee {ix('info', 'ic ic-xs')}</dt><dd><span class="st-pending">&#8377;10.47</span><span class="st-done">&#8377;31.41</span></dd></div>
+          <div><dt>Registration</dt><dd><span class="st-pending">&#8377;349.00 &times; 1</span><span class="st-done">&#8377;349.00 &times; 3</span></dd></div>
+          <div><dt>Convenience fee</dt><dd><span class="st-pending">&#8377;10.47</span><span class="st-done">&#8377;31.41</span></dd></div>
           <div class="st-done"><dt>Paid with</dt><dd>Razorpay, UPI</dd></div>
+          <div class="sum-total st-done"><dt>Total</dt><dd>&#8377;1,078.41</dd></div>
         </dl>
-        <div class="sum-total"><span>Total</span><b><span class="st-pending">&#8377;359.47</span><span class="st-done">&#8377;1,078.41</span></b></div>
         <a class="btn btn--primary btn--block st-pending" href="team.html?state=complete">Pay my share<span class="dot">{ic('arrow')}</span></a>
-        <p class="m-secure st-pending">{ix('shield', 'ic ic-xs')}Each member pays their own share. Spots lock once everyone pays.</p>
-        <a class="btn btn--ink btn--block st-done" href="event.html?state=done">View Event<span class="dot">{ic('arrow')}</span></a>
+        <p class="m-secure st-pending">{ix('shield', 'ic ic-xs')}Each member pays their own share</p>
+        <div class="dl st-done"><a class="btn btn--ink btn--block" href="#">Download Ticket<span class="dot dot--still">{ix('download')}</span></a><a class="btn btn--light btn--block" href="#">Download Receipt<span class="dot dot--still">{ix('download')}</span></a></div>
       </div>
-      <div class="dl st-done"><a class="btn btn--light btn--block" href="#">Download Ticket PDF<span class="dot dot--still">{ix('download')}</span></a><a class="btn btn--light btn--block" href="#">Download Receipt PDF<span class="dot dot--still">{ix('download')}</span></a></div>
+      <div class="help"><span class="tile-ic">{ix('msg', 'ic ic-s')}</span><span><b>Need a hand?</b><small>Teams, refunds or payments</small></span><a class="lc-go" href="https://festhey.agpro.co.in/help" aria-label="Get help">{ic('arrow')}</a></div>
     </aside>
   </section>
 </main>

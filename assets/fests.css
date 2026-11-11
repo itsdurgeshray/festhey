@@ -123,3 +123,7 @@
   .lb-count{font-size:var(--b12);line-height:var(--b12-lh)}
 }
 .lc[hidden],.lb-empty[hidden]{display:none}
+/* bookmark: filled on hover and when saved */
+.lc-save:hover,.lc-save[aria-pressed="true"]{background:var(--sun);box-shadow:none}
+.lc-save:hover .ic,.lc-save[aria-pressed="true"] .ic{fill:var(--ink)}
+.lc-go:hover{background:var(--orange-700)}
