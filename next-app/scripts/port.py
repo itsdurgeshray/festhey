@@ -22,6 +22,7 @@ ATTR = {'class': 'className', 'for': 'htmlFor', 'tabindex': 'tabIndex', 'readonl
         'text-anchor': 'textAnchor', 'dominant-baseline': 'dominantBaseline', 'font-size': 'fontSize', 'font-family': 'fontFamily', 'font-weight': 'fontWeight',
         'letter-spacing': 'letterSpacing', 'clip-path': 'clipPath', 'mask-type': 'maskType', 'pathlength': 'pathLength', 'markerwidth': 'markerWidth',
         'markerheight': 'markerHeight', 'refx': 'refX', 'refy': 'refY', 'spellcheck': 'spellCheck', 'contenteditable': 'contentEditable'}
+SVGTAG = {t.lower(): t for t in ['linearGradient', 'radialGradient', 'clipPath', 'textPath', 'feTurbulence', 'feColorMatrix', 'feGaussianBlur', 'feBlend', 'feComposite', 'feDisplacementMap', 'feOffset', 'feMerge', 'feMergeNode', 'feFlood', 'feDropShadow', 'foreignObject', 'animateTransform', 'animateMotion']}
 BOOL = {'hidden', 'disabled', 'required', 'multiple', 'muted', 'novalidate', 'playsinline', 'autoplay', 'readonly', 'open', 'loop', 'controls', 'allowfullscreen'}
 
 def route_of(fn):
@@ -65,7 +66,20 @@ class P(HTMLParser):
     def __init__(self):
         super().__init__(convert_charrefs=True)
         self.root = Node('#root', []); self.stack = [self.root]
+    # HTML implied end tags: a new <option>, <li>, <tr>... closes the previous open one,
+    # and block elements close an open <p>. Mirrors what the browser parser does.
+    IMPLIED = {'option': {'option'}, 'optgroup': {'option', 'optgroup'}, 'li': {'li'}, 'dt': {'dt', 'dd'}, 'dd': {'dt', 'dd'},
+               'tr': {'tr', 'td', 'th'}, 'td': {'td', 'th'}, 'th': {'td', 'th'}}
+    P_CLOSE = {'address', 'article', 'aside', 'blockquote', 'details', 'div', 'dl', 'fieldset', 'figcaption', 'figure', 'footer',
+               'form', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'header', 'hr', 'main', 'menu', 'nav', 'ol', 'p', 'pre', 'section', 'table', 'ul'}
+    def _implied(self, tag):
+        closes = self.IMPLIED.get(tag, set())
+        if closes and self.stack[-1].tag in closes:
+            self.stack.pop()
+        if tag in self.P_CLOSE and self.stack[-1].tag == 'p':
+            self.stack.pop()
     def handle_starttag(self, tag, attrs):
+        self._implied(tag)
         n = Node(tag, attrs); self.stack[-1].kids.append(n)
         if tag not in VOID:
             self.stack.append(n)
@@ -79,10 +93,13 @@ class P(HTMLParser):
     def handle_data(self, d):
         self.stack[-1].kids.append(d)
 
-def jtext(t):
-    if not t.strip():
-        return '' if '\n' in t else '{" "}'
-    return '{' + json.dumps(re.sub(r'\s+', ' ', t), ensure_ascii=False) + '}'
+NO_WS = {'table', 'thead', 'tbody', 'tfoot', 'tr', 'colgroup', 'select', 'optgroup'}
+def jtext(t, parent=''):
+    """Keep text nodes exactly as in the HTML so inline spacing renders identically.
+    React forbids whitespace-only text inside table rows and selects, so drop it there."""
+    if not t.strip() and parent in NO_WS:
+        return ''
+    return '{' + json.dumps(t, ensure_ascii=False) + '}'
 
 def jattrs(n, extra=None):
     out = []
@@ -111,9 +128,9 @@ def jattrs(n, extra=None):
         out.extend(extra)
     return (' ' + ' '.join(out)) if out else ''
 
-def jsx(n, depth=0):
+def jsx(n, depth=0, parent=''):
     if isinstance(n, str):
-        return jtext(n)
+        return jtext(n, parent)
     if n.tag in ('script',):
         return ''
     extra = []
@@ -132,44 +149,61 @@ def jsx(n, depth=0):
             extra.append(f'defaultValue={json.dumps(txt, ensure_ascii=False)}')
         kids = []
     a = jattrs(n, extra)
+    tag = SVGTAG.get(n.tag, n.tag)
     if n.tag in VOID or not kids:
-        return f'<{n.tag}{a} />'
-    inner = ''.join(jsx(k, depth + 1) for k in kids)
-    return f'<{n.tag}{a}>{inner}</{n.tag}>'
+        return f'<{tag}{a} />'
+    inner = ''.join(jsx(k, depth + 1, n.tag) for k in kids)
+    return f'<{tag}{a}>{inner}</{tag}>'
 
 def port(fn):
     src = open(fn, encoding='utf-8').read()
     title = re.search(r'<title>(.*?)</title>', src, re.S).group(1)
     title = HTMLParser().unescape(title) if hasattr(HTMLParser, 'unescape') else __import__('html').unescape(title)
     head = src[:src.index('<body')]
-    css = [h for h in re.findall(r'<link rel="stylesheet" href="([^"]+)"', head) if not h.endswith('site.css') and 'fontshare' not in h]
+    # every stylesheet the HTML page loads, in the same order (old versions load v1.css etc. instead of site.css)
+    css = [__import__('html').unescape(m.group(1) or m.group(2)) for m in re.finditer(r'<link rel="stylesheet" href="([^"]+)"|<link href="([^"]+)" rel="stylesheet"', head)]
     # stylesheets linked inside body (pages that add css after HEAD)
     body = src[src.index('<body'):]
     body_css = re.findall(r'<link rel="stylesheet" href="([^"]+)">', body)
-    css += [c for c in body_css if c not in css and not c.endswith('site.css')]
-    scripts = re.findall(r'<script src="([^"]+)"></script>', body)
+    css += [c for c in body_css if c not in css]
+    # body scripts in document order: external files by src, inline blocks by their code
+    scripts = []
+    for m in re.finditer(r'<script(?: src="([^"]+)")?[^>]*>(.*?)</script>', body, re.S):
+        if m.group(1):
+            scripts.append(m.group(1))
+        elif m.group(2).strip():
+            scripts.append({'code': m.group(2)})
     body_html = body[body.index('>') + 1: body.rindex('</body>')]
     body_html = re.sub(r'<link rel="stylesheet" href="[^"]+">', '', body_html)
     body_html = re.sub(r'<script[^>]*>.*?</script>', '', body_html, flags=re.S)
-    body_html = body_html.replace('<div class="noise" aria-hidden="true"></div>', '', 1)
     p = P(); p.feed(body_html)
-    tree = ''.join(jsx(k) for k in p.root.kids)
-    links = ''.join(f'<link rel="stylesheet" href="{fix_url(c)}" precedence="page" />' for c in css)
+    tree = ''.join(jsx(k, 0, 'body') for k in p.root.kids)
+    # the first stylesheet is the page's design system (site.css, or v1.css for old versions); it always loads first
+    # fonts first, then the page's design system (site.css, or v1.css for old versions), then page styles
+    fonts = [c for c in css if c.startswith('http')]
+    local = [c for c in css if not c.startswith('http')]
+    links = ''.join(f'<link rel="stylesheet" href={json.dumps(c)} precedence="fonts" />' for c in fonts)
+    links += ''.join(f'<link rel="stylesheet" href="{fix_url(c)}" precedence="{"base" if i == 0 else "page"}" />' for i, c in enumerate(local))
     route = route_of(fn)
     d = os.path.join(APP, route) if route else APP
     os.makedirs(d, exist_ok=True)
-    scripts = [fix_url(s) for s in scripts]
+    scripts = [fix_url(x) if isinstance(x, str) else x for x in scripts]
     code = f'''// Generated by scripts/port.py from {os.path.basename(fn)}. Edit the source page, then re-run the port.
+import {{ preload }} from 'react-dom';
 import ScriptChain from '{'../' if route else './'}components/ScriptChain';
 
 export const metadata = {{ title: {json.dumps(title, ensure_ascii=False)} }};
 
+const SCRIPTS = {json.dumps(scripts)};
+
 export default function Page() {{
+  // start downloading the page scripts with the HTML, exactly like the static page's script tags
+  SCRIPTS.forEach(src => typeof src === 'string' && preload(src, {{ as: 'script' }}));
   return (
     <>
       {links}
       {tree}
-      <ScriptChain srcs={{{json.dumps(scripts)}}} />
+      <ScriptChain srcs={{SCRIPTS}} />
     </>
   );
 }}

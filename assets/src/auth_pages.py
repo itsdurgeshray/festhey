@@ -66,7 +66,7 @@ reg_form = f'''
       {fl('Email', 'mail', 'you@college.edu', 'email', 'remail', 'autocomplete="email" required', '<p class="m-hint" data-for="organiser" hidden>' + ix('info', 'ic ic-xs') + '<span>Use your official college email to verify instantly.</span></p>')}
       {sel('State', 'state', STATES, 'Select state')}
       {fl('City', 'pin', 'e.g. Bengaluru', 'text', 'city')}
-      <div class="df df--full"><label class="m-label" for="college">College</label><label class="fld">{ix('search')}<input id="college" list="colleges" placeholder="Search your college" required></label><datalist id="colleges">{''.join(f'<option value="{c[0]}">' for c in COLLEGES)}</datalist></div>
+      <div class="df df--full"><label class="m-label" for="college">College</label><label class="fld">{ix('search')}<input id="college" list="colleges" placeholder="Search your college" required></label><datalist id="colleges">{''.join(f'<option value="{c[0]}"></option>' for c in COLLEGES)}</datalist></div>
       <div data-for="student" class="df">{sel('Graduation year', 'grad', ['2026', '2027', '2028', '2029', '2030'], 'Select year')}</div>
       <div data-for="organiser" class="df" hidden>{fl('College website', 'link', 'e.g. msrit.edu', 'url', 'site')}</div>
       <div class="df"><label class="m-label" for="phone">Phone</label><label class="fld fld--tel"><span class="tel-cc">+91</span><input id="phone" type="tel" inputmode="numeric" maxlength="10" placeholder="98765 43210" autocomplete="tel-national"></label></div>

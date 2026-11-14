@@ -1,3 +1,5 @@
 node_modules
 .next
 public/assets
+public/h-*.htm
+.next-dev

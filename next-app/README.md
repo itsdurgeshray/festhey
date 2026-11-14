@@ -23,6 +23,10 @@ into `public/assets`, so the static site and the Next app always use the same fi
 - `app/components/ScriptChain.jsx` loads each page's interaction scripts in order after hydration
   (GSAP, Lenis, then `site.js`, `app.js`, `dash.js` and so on).
 - Old links such as `/fest.html` redirect to `/fest`.
+- Text and spacing are copied exactly, and the converter follows the browser's HTML rules for tags
+  that close themselves (`<option>`, `<li>`, `<p>`...), so React hydrates every page without errors
+  and the `anim`/`figma` class on `<html>` is never lost.
+- To run `next dev` next to a production build, give it its own folder: `NEXT_DIST_DIR=.next-dev npm run dev`.
 
 ## Updating pages
 
