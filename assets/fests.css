@@ -41,7 +41,7 @@
 .lb-chips .chip{flex:none}
 .lb-grid{display:grid;grid-template-columns:264px minmax(0,1fr);gap:32px;align-items:start}
 .lb-side{position:sticky;top:120px;padding:24px;border-radius:var(--r-lg);background:var(--paper);box-shadow:var(--sh-1)}
-.lb-side-h{display:flex;align-items:center;gap:10px;margin-bottom:24px;font-family:var(--fd);font-weight:600;font-size:var(--h4);line-height:var(--h4-lh)}
+.lb-side-h{display:flex;align-items:center;gap:10px;margin-bottom:24px;padding-bottom:16px;border-bottom:2px solid var(--line);font-family:var(--fd);font-weight:600;font-size:var(--h4);line-height:var(--h4-lh)}
 .lb-ic{display:grid;place-items:center;width:28px;height:28px;border-radius:8px;background:var(--sun)}
 .lb-side .eyebrow{margin:24px 0 12px}
 .lb-side .eyebrow:first-of-type{margin-top:0}
@@ -80,7 +80,7 @@
 .lc-name{font-family:var(--fd);font-weight:600;font-size:var(--h4);line-height:var(--h4-lh);min-height:56px}
 .lc-name:hover{color:var(--orange-700)}
 .lc-meta{font-size:var(--b14);line-height:var(--b14-lh);color:var(--ink-60)}
-.lc-foot{display:flex;align-items:center;gap:8px;margin-top:12px}
+.lc-foot{display:flex;align-items:center;gap:8px;margin-top:16px;padding-top:12px;border-top:2px solid var(--line)}
 .lc-att{display:flex;align-items:center;gap:6px;flex:1;font-size:var(--b12);line-height:var(--b12-lh);font-weight:700}
 .lc-save{display:grid;place-items:center;width:40px;height:40px;border-radius:50%;box-shadow:inset 0 0 0 2px var(--line-2);transition:background .3s,color .3s,box-shadow .3s}
 .lc-save:hover{box-shadow:inset 0 0 0 2px var(--ink)}
@@ -127,3 +127,7 @@
 .lc-save:hover,.lc-save[aria-pressed="true"]{background:var(--sun);box-shadow:none}
 .lc-save:hover .ic,.lc-save[aria-pressed="true"] .ic{fill:var(--ink)}
 .lc-go:hover{background:var(--orange-700)}
+/* hero art: three tilted photos and the students sticker */
+.lh-img3{position:absolute;right:0;top:-8px;width:200px;height:200px;object-fit:cover;border-radius:var(--r-lg);border:6px solid var(--paper);box-shadow:var(--sh-2);transform:rotate(8deg);z-index:1}
+.lh-img2{object-position:30% center}
+.lh-stick{right:40px;bottom:-12px;z-index:4}

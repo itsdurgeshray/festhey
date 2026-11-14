@@ -227,7 +227,7 @@ ev_page = HEAD.format(title=f"{EV['name']} | {EV['fest']} | FestHey") + css('fes
     <div class="wrap"><div class="fd-head"><div><p class="eyebrow"><span></span>Also at {EV['fest']}</p><h2>MORE EVENTS</h2></div>{btn('View Fest', EV['fest_href'], 'ink', 'sm')}</div></div>
     <div class="ev-track"><div class="ev-row v-ticket">{others}</div></div>
   </section>
-{B['faq_block'](EV_FAQ, 'TEAM EVENT QUESTIONS', 'Everything about teams, invites and refunds for this event. Still unsure? Our team replies within a day.', 'faq')}
+{B['faq_block'](B['FAQ'])}
 </main>
 <div class="fd-dock st-open"><span><small>&#8377;{EV['fee']}.00 / Member</small><b>Closes {EV['deadline']}</b></span><button class="btn btn--primary btn--sm" data-open="m-team">Register<span class="dot">{ic('arrow')}</span></button></div>
 <div class="fd-toast" role="status" aria-live="polite"></div>

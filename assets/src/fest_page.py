@@ -7,7 +7,7 @@ ROOT = '/Users/durgesh/Desktop/WFT/festhey'
 B = runpy.run_path(os.path.join(ROOT, 'assets/src/build.py'))
 L = runpy.run_path(os.path.join(ROOT, 'assets/src/fests_page.py'))
 ic, btn, HEAD, NAV, FESTS, EVENTS, FAQ, BASE, evc, qa = B['ic'], B['btn'], B['HEAD'], B['NAV'], B['FESTS'], B['EVENTS'], B['FAQ'], B['BASE'], B['evc'], B['qa']
-icx, card, FOOT = L['icx'], L['card'], L['FOOT']
+icx, card, FOOT, PIT = L['icx'], L['card'], L['FOOT'], L['PIT']
 e = html.escape
 ICY = {
  'share': '<circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.6 13.5 6.8 4M15.4 6.5l-6.8 4"/>',
@@ -138,14 +138,14 @@ page = HEAD.format(title=f'{F[0]} | FestHey') + '<link rel="stylesheet" href="as
   </section>
 
   <!-- ============ FAQS ============ -->
-{B['faq_block']([FAQ[1], FAQ[2], FAQ[3], FAQ[6]], 'BEFORE YOU REGISTER', 'Quick answers about registering, teams and refunds for this fest. Still stuck? Our team replies within a day.', 'faqs')}
+{B['faq_block'](FAQ, sid='faqs')}
 
   <!-- ============ SIMILAR ============ -->
   <section class="wrap fd-sec" id="similar">
     <div class="fd-head"><div><p class="eyebrow"><span></span>Keep exploring</p><h2>SIMILAR FESTS</h2></div>{btn('All Fests', 'fests.html', 'ink', 'sm')}</div>
     <div class="lb-cards">{similar}</div>
   </section>
-</main>
+{PIT}</main>
 
 <div class="fd-dock"><span><small>Registration closes</small><b>Dec 4, 2026</b></span><a class="btn btn--primary btn--sm" href="#events">View Events<span class="dot">{ic('arrow')}</span></a></div>
 <div class="fd-toast" role="status" aria-live="polite"></div>

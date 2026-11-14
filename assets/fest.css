@@ -22,16 +22,16 @@
 /* facts */
 .fd-facts-wrap{position:relative;z-index:5;margin-top:-56px}
 .fd-facts{display:flex;align-items:center;gap:8px;padding:12px 12px 12px 24px;border-radius:var(--r-lg);background:var(--paper);box-shadow:var(--sh-2)}
-.fd-fact{display:flex;align-items:center;gap:12px;flex:1;padding:8px 12px;border-radius:var(--r-md);background:var(--snow)}
-
-.fd-fact-ic{display:grid;place-items:center;width:40px;height:40px;border-radius:50%;background:var(--paper);flex:none}
+.fd-fact{display:flex;align-items:center;gap:12px;flex:1;padding:8px 16px 8px 0;border-right:2px solid var(--line)}
+.fd-fact:nth-last-child(2){border-right:0}
+.fd-fact-ic{display:grid;place-items:center;width:40px;height:40px;border-radius:50%;background:var(--snow);flex:none}
 .fd-fact small{display:block;font-size:var(--b12);line-height:var(--b12-lh);color:var(--ink-60);font-weight:500}
 .fd-fact b{display:block;font-size:var(--b16);line-height:var(--b16-lh)}
 .fd-fact--hot .fd-fact-ic{background:var(--sun)}
 .fd-cta{flex:none}
 
 /* tabs */
-.fd-tabs{position:sticky;top:0;z-index:40;margin-top:40px;background:rgba(247,245,240,.94);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
+.fd-tabs{position:sticky;top:0;z-index:40;margin-top:40px;background:rgba(247,245,240,.94);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:2px solid var(--line)}
 .fd-tabs-in{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none}
 .fd-tabs-in::-webkit-scrollbar{display:none}
 .fd-tabs a{position:relative;flex:none;padding:16px 16px;font-size:var(--b14);line-height:var(--b14-lh);font-weight:700;color:var(--ink-60);transition:color .25s}
@@ -62,11 +62,11 @@
 .fd-sec-in{position:relative;z-index:2}
 .fd-days{display:grid;grid-template-columns:1fr 1fr;gap:24px}
 .fd-day{padding:24px;border-radius:var(--r-lg);background:var(--paper);box-shadow:var(--sh-1)}
-.fd-day-h{display:flex;align-items:center;gap:12px;padding-bottom:8px}
+.fd-day-h{display:flex;align-items:center;gap:12px;padding-bottom:16px;border-bottom:2px solid var(--line)}
 .fd-day-h b{font-family:var(--fd);font-weight:600;font-size:var(--h4);line-height:var(--h4-lh)}
 .fd-tl{list-style:none;display:flex;flex-direction:column}
-.fd-tl li{position:relative;display:grid;grid-template-columns:64px minmax(0,1fr);gap:16px;padding:16px 0}
-.fd-tl li:last-child{padding-bottom:0}
+.fd-tl li{position:relative;display:grid;grid-template-columns:64px minmax(0,1fr);gap:16px;padding:16px 0 16px 0;border-bottom:2px dashed var(--line)}
+.fd-tl li:last-child{border-bottom:0;padding-bottom:0}
 .fd-tl time{font-family:var(--fd);font-weight:600;font-size:var(--b16);line-height:var(--b16-lh);color:var(--orange-700)}
 .fd-tl b{display:block;font-size:var(--b16);line-height:var(--b16-lh)}
 .fd-tl small{font-size:var(--b14);line-height:var(--b14-lh);color:var(--ink-60)}
@@ -123,7 +123,7 @@
 @media (max-width:1180px){
   .fd-events{grid-template-columns:repeat(2,minmax(0,1fr))}
   .fd-facts{flex-wrap:wrap;padding:16px}
-  .fd-fact{flex:1 1 40%}
+  .fd-fact{flex:1 1 40%;border-right:0}
   .fd-cta{width:100%}
   .fd-about{grid-template-columns:1fr}
   .fd-org{position:static}
@@ -168,8 +168,8 @@
 .fx--i .fx-ic{background:var(--ink);color:var(--sun)}
 .fx--w .fx-ic{background:var(--snow);color:var(--orange);box-shadow:inset 0 0 0 2px var(--line)}
 .fd-highs{position:relative;overflow:hidden;isolation:isolate;list-style:none;display:grid;grid-template-columns:repeat(4,1fr);margin-top:24px;padding:24px 8px;border-radius:var(--r-lg);background:var(--orange);color:var(--snow)}
-.fd-highs li{position:relative;z-index:2;padding:0 16px}
-
+.fd-highs li{position:relative;z-index:2;padding:0 16px;border-left:2px dashed rgba(255,250,240,.35)}
+.fd-highs li:first-of-type{border-left:0}
 .fd-highs b{display:block;font-family:var(--fd);font-weight:600;font-size:var(--h2);line-height:var(--h2-lh)}
 .fd-highs span{font-size:var(--b12);line-height:var(--b12-lh);font-weight:700;text-transform:uppercase;letter-spacing:.08em;opacity:.85}
 .fd-org{position:sticky;top:88px;border-radius:var(--r-lg);background:var(--paper);box-shadow:var(--sh-1);overflow:hidden}
@@ -187,6 +187,7 @@
   .fd-gallery{grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:none;grid-auto-rows:200px}
   .fd-g1,.fd-g6{grid-column:auto;grid-row:auto}
   .fd-highs{grid-template-columns:repeat(2,1fr);row-gap:20px}
+  .fd-highs li:nth-of-type(3){border-left:0}
   .fd-about{grid-template-columns:minmax(0,1fr)}
   .fd-org{position:static}
 }

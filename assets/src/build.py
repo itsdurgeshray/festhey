@@ -362,7 +362,6 @@ page = HEAD.format(title='FestHey | Discover College Fests &amp; Events Across I
     <div class="foot-bot">
       <span>&copy; 2026 FestHey</span>
       <span class="foot-legal"><a href="{BASE}/privacy-policy">Privacy Policy</a><a href="{BASE}/terms">Terms of Service</a></span>
-      <a class="icon-btn icon-btn--ink to-top" href="#top" aria-label="Back to top">{ic('up')}</a>
     </div>
   </div>
 </footer>

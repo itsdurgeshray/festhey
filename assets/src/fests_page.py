@@ -8,6 +8,7 @@ ROOT = '/Users/durgesh/Desktop/WFT/festhey'
 B = runpy.run_path(os.path.join(ROOT, 'assets/src/build.py'))
 ic, btn, HEAD, NAV, FESTS, ADS, BASE = B['ic'], B['btn'], B['HEAD'], B['NAV'], B['FESTS'], B['ADS'], B['BASE']
 e = html.escape
+AV = B['AV']
 index = B['page']
 PIT = index[index.index('  <!-- ============ JOIN THE PIT'):index.index('</main>')]
 FOOT = index[index.index('<!-- ============ FOOTER'):index.index('</footer>') + 9]
@@ -82,9 +83,10 @@ page = HEAD.format(title='Explore Fests | FestHey') + '<link rel="stylesheet" hr
         <p class="lead lh-p">Browse college fests from across India. Filter by category, city, or duration to find the ones that match your vibe.</p>
       </div>
       <div class="lh-art" aria-hidden="true">
-        <span class="lh-sq"></span><span class="lh-sun"></span>
+        <img class="lh-img3" src="assets/img/v4/dance.jpg" alt="" width="800" height="1200">
+        <img class="lh-img2" src="assets/img/fests/blog-fest-season-crowd.jpg" alt="" width="1280" height="720">
         <img class="lh-img" src="assets/img/v4/pronite.jpg" alt="" width="800" height="1200">
-        <img class="lh-img2" src="assets/img/v4/dance.jpg" alt="" width="800" height="1200">
+        <span class="host-stick lh-stick"><span class="avs">{AV}</span><b>2,000+ Students</b></span>
       </div>
     </div>
   </section>
