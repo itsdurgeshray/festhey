@@ -364,6 +364,11 @@ blog_page = HEAD.format(title='Blog | FestHey') + css('fests', 'fest', 'app') + 
   </section>
   <section class="wrap lb bl-list">
     <div class="lb-bar"><label class="lb-search">{icx('search')}<input type="search" placeholder="Search articles" aria-label="Search articles"></label><div class="chips lb-chips" role="group" aria-label="Topics">{bchips}</div></div>
+    <div class="bcar" aria-roledescription="carousel" aria-label="Featured articles">
+      <div class="bcar-track">{''.join(f'<article class="bslide" aria-roledescription="slide" aria-label="{i+1} of 3"><a class="bslide-ph" href="article.html"><img src="{pimg(p[4])}" alt="" width="800" height="1200"></a><div class="bslide-body"><span class="chip chip--sun">Featured &middot; {p[1]}</span><h2 class="bslide-t">{e(p[2])}</h2><p>{e(p[3])}</p><span class="bslide-meta">{ix("clock", "ic ic-xs")}{p[5]} min read</span>{btn("Read Article", "article.html", "primary")}</div></article>' for i, p in enumerate([POSTS[1], POSTS[2], POSTS[4]]))}</div>
+      <div class="bcar-nav"><button class="icon-btn icon-btn--sm bcar-prev" aria-label="Previous article">{ic('left')}</button><div class="bcar-dots">{''.join(f'<button aria-label="Go to slide {i+1}"{" class=is-on" if i == 0 else ""}></button>' for i in range(3))}</div><button class="icon-btn icon-btn--sm bcar-next" aria-label="Next article">{ic('right')}</button></div>
+    </div>
+    <h2 class="bl-latest">LATEST ARTICLES</h2>
     <div class="bl-grid">{''.join(post(p) for p in POSTS[1:])}</div>
     <p class="lb-empty" hidden>No articles match yet.</p>
     <div class="lb-pager"><span class="lb-count">Showing <b class="lb-n">{len(POSTS) - 1}</b> articles</span><nav class="lb-pages" aria-label="Pages"><button class="icon-btn icon-btn--sm" disabled aria-label="Previous">{ic('left')}</button><button class="lb-pg is-on">1</button><button class="icon-btn icon-btn--sm" disabled aria-label="Next">{ic('right')}</button></nav></div>

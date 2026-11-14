@@ -64,4 +64,16 @@
     const io = new IntersectionObserver(es => es.forEach(en => { if (en.isIntersecting) links.forEach(a => a.classList.toggle('on', a.getAttribute('href') === '#' + en.target.id)); }), { rootMargin: '-20% 0px -70% 0px' });
     links.forEach(a => { const s = $(a.getAttribute('href')); s && io.observe(s); });
   }
+
+  // blog featured carousel
+  const car = $('.bcar');
+  if (car) {
+    const tr = $('.bcar-track', car), dots = $$('.bcar-dots button', car), n = dots.length;
+    const idx = () => Math.round(tr.scrollLeft / (tr.scrollWidth / n));
+    const go = i => tr.scrollTo({ left: ((i + n) % n) * (tr.scrollWidth / n), behavior: 'smooth' });
+    $('.bcar-prev', car).addEventListener('click', () => go(idx() - 1));
+    $('.bcar-next', car).addEventListener('click', () => go(idx() + 1));
+    dots.forEach((d, i) => d.addEventListener('click', () => go(i)));
+    tr.addEventListener('scroll', () => { const k = idx(); dots.forEach((d, i) => d.classList.toggle('is-on', i === k)); }, { passive: true });
+  }
 })();

@@ -114,7 +114,7 @@ page = HEAD.format(title=f'{F[0]} | FestHey') + '<link rel="stylesheet" href="as
       <div class="fd-org-in">
         <div class="fd-org-top"><span class="fd-org-av">RV</span><span><b>R V College of Engineering</b><small>{icx('pin', 'ic ic-xs')}Bengaluru, Karnataka</small></span></div>
         <p class="fd-org-p">Questions about an event, refunds or teams? The organising college handles them directly.</p>
-        <div class="fd-org-cta">{btn('Contact Organiser', BASE + '/help', 'ink', 'sm')}<a class="fd-link" href="{BASE}/colleges">View college{ic('arrow', 'ic ic-xs')}</a></div>
+        <div class="fd-org-cta">{btn('Contact Organiser', BASE + '/help', 'ink', 'sm')}<a class="fd-link" href="college.html">View college{ic('arrow', 'ic ic-xs')}</a></div>
       </div>
     </aside>
   </section>

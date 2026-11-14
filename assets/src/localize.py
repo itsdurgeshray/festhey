@@ -9,7 +9,12 @@ RULES = [
     (B + r'/fests(?=["#?])', 'fests.html'),
     (B + r'/events(?:/[^"#?]+)?(?=["#?])', 'event.html'),
     (B + r'/blogs?(?:/[^"#?]+)?(?=["#?])', 'blog.html'),
-    (B + r'/colleges(?=["#?])', 'fests.html'),
+    (B + r'/colleges(?=["#?])', 'colleges.html'),
+    (B + r'/help(?=["#?])', 'help.html'),
+    (B + r'/about(?=["#?])', 'about.html'),
+    (B + r'/privacy-policy(?=["#?])', 'privacy.html'),
+    (B + r'/refund-policy(?=["#?])', 'refund.html'),
+    (B + r'/terms(?=["#?])', 'privacy.html'),
     (B + r'/account/my-registrations', 'team.html?state=complete'),
     (B + r'/?(?=")', 'index.html'),
 ]
