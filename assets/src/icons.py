@@ -16,7 +16,7 @@ MAP = {
  'sparkles': 'sparkles', 'quote': 'quote', 'cap': 'graduation-cap', 'qr': 'qr-code', 'card': 'credit-card', 'link': 'link',
  'okc': 'circle-check', 'gift': 'gift', 'plug': 'plug-zap', 'flag': 'flag', 'mic': 'mic', 'music': 'music', 'gauge': 'gauge',
  'receipt': 'receipt', 'hourglass': 'hourglass', 'hand': 'hand-heart', 'eye': 'eye', 'heart': 'heart', 'school': 'school',
- 'plus': 'plus', 'minus': 'minus', 'camera': 'camera', 'calcheck': 'calendar-check', 'rupee': 'indian-rupee', 'bolt': 'bolt',
+ 'plus': 'plus', 'bell': 'bell', 'edit': 'pencil', 'trash': 'trash-2', 'upload': 'upload', 'eyeoff': 'eye-off', 'logout': 'log-out', 'scan': 'scan-line', 'dash': 'layout-dashboard', 'wallet': 'wallet', 'building': 'building-2', 'phone': 'phone', 'key': 'key-round', 'mailok': 'mail-check', 'minus': 'minus', 'camera': 'camera', 'calcheck': 'calendar-check', 'rupee': 'indian-rupee', 'bolt': 'bolt',
 }
 _cache = {}
 def inner(n):

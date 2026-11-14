@@ -15,7 +15,14 @@ RULES = [
     (B + r'/privacy-policy(?=["#?])', 'privacy.html'),
     (B + r'/refund-policy(?=["#?])', 'refund.html'),
     (B + r'/terms(?=["#?])', 'privacy.html'),
-    (B + r'/account/my-registrations', 'team.html?state=complete'),
+    (B + r'/account/my-registrations', 'me-registrations.html'),
+    (B + r'/auth/login[^"]*', 'login.html'),
+    (B + r'/auth/register/organizer', 'register.html?role=organiser'),
+    (B + r'/auth/register[^"]*', 'register.html'),
+    (B + r'/organizer/dashboard/fests/new', 'org-create-fest.html'),
+    (B + r'/organizer/dashboard/fests', 'org-fests.html'),
+    (B + r'/organizer/dashboard[^"]*', 'org.html'),
+    (B + r'/how-it-works', 'about.html'),
     (B + r'/?(?=")', 'index.html'),
 ]
 for f in sorted(glob.glob(os.path.join(ROOT, '*.html'))):

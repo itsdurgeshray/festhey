@@ -203,7 +203,7 @@ help_body = f'''
         <p>Most messages get a reply within 2 hours.</p>
         <a class="btn btn--ink btn--block" href="mailto:support@festhey.in">Contact Support<span class="dot dot--still">{ix('mail')}</span></a>
       </div>
-      <a class="help" href="team.html?state=complete"><span class="tile-ic">{ix('ticket', 'ic ic-s')}</span><span><b>My registrations</b><small>Tickets, QR and receipts</small></span>{ic('arrow', 'ic ic-s')}</a>
+      <a class="help" href="me-registrations.html"><span class="tile-ic">{ix('ticket', 'ic ic-s')}</span><span><b>My registrations</b><small>Tickets, QR and receipts</small></span>{ic('arrow', 'ic ic-s')}</a>
       <a class="help" href="refund.html"><span class="tile-ic">{ix('receipt', 'ic ic-s')}</span><span><b>Refund policy</b><small>Windows and timelines</small></span>{ic('arrow', 'ic ic-s')}</a>
       <a class="help" href="privacy.html"><span class="tile-ic">{ix('shield', 'ic ic-s')}</span><span><b>Privacy policy</b><small>How we handle your data</small></span>{ic('arrow', 'ic ic-s')}</a>
     </aside>
@@ -240,7 +240,7 @@ refund_body = legal('REFUND', 'POLICY', 'May 26, 2026',
    ('Cancellation by the organiser', '<p>If an organiser cancels an event, you are entitled to a full refund of the registration fee. FestHey works with the organiser to start that refund automatically; you don&rsquo;t need to do anything.</p>'),
    ('Cancelling it yourself', '<p>To cancel, go to My Registrations in your dashboard. Whether you get money back depends on when you cancel:</p>' + REF_TIERS),
    ('Processing time', '<p>Approved refunds go back to the original payment method. Allow 5 to 7 business days for the amount to appear, depending on your bank or card issuer.</p><ol class="lg-steps"><li><b>Request</b><span>Cancel in My Registrations</span></li><li><b>Approval</b><span>Organiser reviews, usually within 48 hours</span></li><li><b>Refund</b><span>5 to 7 business days to your account</span></li></ol>')],
-  lcta('NEED TO REQUEST A REFUND?', 'Open your registrations to see the refund eligibility for each event.', 'Go to My Registrations', 'team.html?state=complete', 'arrow'))
+  lcta('NEED TO REQUEST A REFUND?', 'Open your registrations to see the refund eligibility for each event.', 'Go to My Registrations', 'me-registrations.html', 'arrow'))
 
 privacy_body = legal('PRIVACY', 'POLICY', 'June 9, 2026',
   [('lock', 'We collect only what we need to run your registrations.'), ('card', 'Payments go through Razorpay; we never store card details.'), ('shield', 'We don&rsquo;t sell your data to anyone, ever.')],

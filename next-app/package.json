@@ -1,0 +1,19 @@
+{
+  "name": "festhey-next",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "assets": "node scripts/copy-assets.mjs",
+    "port": "python3 scripts/port.py",
+    "predev": "npm run assets",
+    "dev": "next dev -p 5212",
+    "prebuild": "npm run assets",
+    "build": "next build",
+    "start": "next start -p 5212"
+  },
+  "dependencies": {
+    "next": "15.5.29",
+    "react": "19.1.1",
+    "react-dom": "19.1.1"
+  }
+}

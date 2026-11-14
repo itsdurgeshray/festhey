@@ -31,8 +31,6 @@ body:has(main[data-state="pending"]) .fd-dock.st-open,body:has(main[data-state="
 .tile b{display:block;font-size:var(--b14);line-height:var(--b14-lh);overflow-wrap:anywhere}
 
 /* ===== event ===== */
-.ev .fd-fact:nth-last-child(2){border-right:2px solid var(--line)}
-.ev .fd-fact:last-of-type{border-right:0}
 .st-banner{display:flex;align-items:center;gap:10px;margin-top:12px;padding:12px 20px;border-radius:var(--r-md);background:var(--sun);font-size:var(--b14);line-height:var(--b14-lh)}
 .ev-grid{display:grid;grid-template-columns:minmax(0,1fr) 380px;gap:48px;align-items:start}
 .ev-main h2{margin-bottom:16px}
@@ -53,7 +51,7 @@ body:has(main[data-state="pending"]) .fd-dock.st-open,body:has(main[data-state="
 .ev-price span{font-size:var(--b14);line-height:var(--b14-lh);font-weight:700;color:var(--ink-60)}
 .ev-team{display:flex;align-items:center;gap:6px;font-size:var(--b12);line-height:var(--b12-lh);color:var(--ink-75)}
 .ev-fee-cut{position:relative;height:24px}
-.ev-fee-cut::before{content:"";position:absolute;left:20px;right:20px;top:10px;border-top:2px dashed var(--line-2)}
+.ev-fee-cut::before{content:"";position:absolute;left:20px;right:20px;top:10px;height:4px;background:radial-gradient(circle,var(--line-2) 2px,transparent 2px) 0 0/12px 4px repeat-x}
 .ev-fee-cut::after{content:"";position:absolute;left:-12px;right:-12px;top:0;height:24px;background:radial-gradient(circle at 12px 12px,var(--snow) 12px,transparent 12px) left/24px 24px no-repeat,radial-gradient(circle at 12px 12px,var(--snow) 12px,transparent 12px) right/24px 24px no-repeat}
 .ev-fee-bot{padding:4px 24px 24px}
 .ev-fee-rows{display:flex;flex-direction:column;gap:10px;margin-bottom:20px}
@@ -136,7 +134,7 @@ html.figma .ev-tape div{animation:none}
 .rv--big .rv-q{color:var(--ink)}
 .rv p{flex:1;font-size:var(--b16);line-height:var(--b16-lh);color:var(--ink)}
 .rv--big p{max-width:640px;font-family:var(--fd);font-weight:500;font-size:var(--h4);line-height:var(--h4-lh)}
-.rv-by{display:flex;align-items:center;gap:12px;padding-top:16px;border-top:2px solid rgba(20,10,4,.08)}
+.rv-by{display:flex;align-items:center;gap:12px}
 .rv-by img{width:40px;height:40px;border-radius:50%;object-fit:cover}
 .rv-by>span:nth-child(2){flex:1}
 .rv-by b{display:block;font-size:var(--b14);line-height:var(--b14-lh)}
@@ -188,7 +186,7 @@ html.figma .ev-tape div{animation:none}
 .inv-from img{width:40px;height:40px;border-radius:50%;box-shadow:0 0 0 2px var(--snow)}
 .inv-top h2{margin:16px 0 12px;font-size:var(--h2);line-height:var(--h2-lh)}
 .inv-cut{position:relative;height:24px;margin-top:-12px;z-index:3}
-.inv-cut::before{content:"";position:absolute;left:24px;right:24px;top:10px;border-top:2px dashed var(--line-2)}
+.inv-cut::before{content:"";position:absolute;left:24px;right:24px;top:10px;height:4px;background:radial-gradient(circle,var(--line-2) 2px,transparent 2px) 0 0/12px 4px repeat-x}
 .inv-cut::after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 0 12px,rgba(20,10,4,.6) 12px,transparent 12px),radial-gradient(circle at 100% 12px,rgba(20,10,4,.6) 12px,transparent 12px)}
 .inv-body{padding:12px 28px 28px}
 .inv-squad{display:flex;justify-content:center;gap:16px}
@@ -253,7 +251,7 @@ html.modal-open{overflow:hidden}
 .epass-main{padding:28px}
 .epass-main h2{margin:8px 0 20px;font-size:var(--h3);line-height:var(--h3-lh)}
 .epass-tiles{grid-template-columns:repeat(2,minmax(0,1fr))}
-.epass-stub{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;padding:24px;background:var(--sun);border-left:2px dashed rgba(20,10,4,.25)}
+.epass-stub{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;padding:24px;background:var(--sun)}
 .epass-stub::before,.epass-stub::after{content:"";position:absolute;left:-14px;width:24px;height:24px;border-radius:50%;background:var(--snow)}
 .epass-stub::before{top:-12px}.epass-stub::after{bottom:-12px}
 .epass-stub small{font-size:var(--eb);line-height:var(--eb-lh);font-weight:700;letter-spacing:.08em;text-transform:uppercase}
@@ -271,7 +269,7 @@ html.modal-open{overflow:hidden}
 .sum div{display:flex;justify-content:space-between;gap:12px;font-size:var(--b14);line-height:var(--b14-lh)}
 .sum dt{color:var(--ink-60)}
 .sum dd{font-weight:700}
-.sum .sum-total{margin-top:4px;padding-top:12px;border-top:2px dashed var(--line-2)}
+.sum .sum-total{margin-top:4px;padding:10px 12px;border-radius:var(--r-sm);background:var(--paper)}
 .sum-total dt{color:var(--ink);font-weight:700}
 .sum-total dd{font-family:var(--fd);font-weight:600;font-size:var(--h4);line-height:var(--h4-lh)}
 .dl{display:flex;flex-direction:column;gap:12px}
@@ -315,9 +313,10 @@ html.modal-open{overflow:hidden}
 .ar-cover{display:block;width:100%;height:520px;margin-top:48px;object-fit:cover;border-radius:var(--r-lg)}
 .ar-grid{display:grid;grid-template-columns:240px minmax(0,720px);justify-content:center;gap:64px;padding-top:64px}
 .ar-toc{position:sticky;top:96px;display:flex;flex-direction:column;align-self:start;gap:4px}
-.ar-toc a{padding:8px 12px;border-left:2px solid var(--line);font-size:var(--b14);line-height:var(--b14-lh);color:var(--ink-60);transition:color .3s,border-color .3s}
-.ar-toc a.on,.ar-toc a:hover{border-color:var(--orange);color:var(--ink);font-weight:700}
-.ar-toc .ar-back{display:flex;align-items:center;gap:6px;margin-top:24px;border:0;font-weight:700;color:var(--ink)}
+.ar-toc a{padding:8px 14px;border-radius:var(--r-pill);font-size:var(--b14);line-height:var(--b14-lh);color:var(--ink-60);transition:color .3s,border-color .3s}
+.ar-toc a:hover{background:var(--paper);color:var(--ink)}
+.ar-toc a.on{background:var(--sun);color:var(--ink);font-weight:700}
+.ar-toc .ar-back-old{display:flex;align-items:center;gap:6px;margin-top:24px;border:0;font-weight:700;color:var(--ink)}
 .ar-body{font-size:var(--b16);line-height:30px;color:var(--ink-75)}
 .ar-body p{margin-bottom:20px}
 .ar-intro{font-size:var(--h4);line-height:var(--h4-lh);color:var(--ink)}
@@ -352,6 +351,33 @@ html.modal-open{overflow:hidden}
   .bslide{grid-template-columns:minmax(0,1fr);gap:16px}
   .bslide-ph{height:240px}
   .bslide-body{padding:0 12px 16px}
+}
+
+/* article v2 */
+.ar-nav{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:24px}
+.ar-nav .fd-crumb{margin:0}
+.ar-backlink{display:inline-flex;align-items:center;gap:6px;height:36px;padding:0 14px;border-radius:var(--r-pill);background:var(--paper);box-shadow:var(--sh-1);font-size:var(--b14);line-height:var(--b14-lh);font-weight:700;transition:background .3s}
+.ar-backlink:hover{background:var(--sun)}
+.ar-head>.chip{margin-bottom:16px}
+.ar-body h3{margin:24px 0 8px;font-family:var(--fd);font-weight:600;font-size:var(--h4);line-height:var(--h4-lh);color:var(--ink)}
+.ar-body blockquote{position:relative;padding-top:56px}
+.ar-q{position:absolute;left:28px;top:20px}
+.ar-q .ic{width:28px;height:28px;fill:var(--ink);stroke:none}
+.ar-list{margin:8px 0 24px}
+.ar-take{margin:0 0 32px;padding:24px;border-radius:var(--r-lg);background:var(--paper);box-shadow:var(--sh-1)}
+.ar-take .ok-list li{color:var(--ink)}
+.ar-author{display:flex;align-items:center;gap:20px;margin-top:48px;padding:24px;border-radius:var(--r-lg);background:var(--paper);box-shadow:var(--sh-1)}
+.ar-author img{width:64px;height:64px;border-radius:50%;object-fit:cover;flex:none}
+.ar-author>div{flex:1}
+.ar-author small{font-size:var(--b12);line-height:var(--b12-lh);color:var(--ink-60)}
+.ar-author b{display:block;font-size:var(--b16);line-height:var(--b16-lh);color:var(--ink)}
+.ar-author p{margin:4px 0 0;font-size:var(--b14);line-height:var(--b14-lh)}
+.ar-shares{display:flex;align-items:center;gap:8px;margin-top:24px;padding:12px;border-radius:var(--r-lg);background:var(--paper)}
+.ar-shares span{flex:1;font-size:var(--b12);line-height:var(--b12-lh);font-weight:700}
+.ar-shares .icon-btn{box-shadow:none;background:var(--snow)}
+@media (max-width:640px){
+  .ar-nav{flex-direction:column;align-items:flex-start}
+  .ar-author{flex-direction:column;align-items:flex-start}
 }
 
 @media (max-width:1180px){
@@ -407,7 +433,7 @@ html.modal-open{overflow:hidden}
   .ev-card-in{padding:20px}
   .card-h{flex-wrap:wrap}
   .epass{grid-template-columns:minmax(0,1fr)}
-  .epass-stub{border-left:0;border-top:2px dashed rgba(20,10,4,.25)}
+
   .epass-stub::before,.epass-stub::after{top:-12px;bottom:auto}
   .epass-stub::before{left:-12px}
   .epass-stub::after{left:auto;right:-12px}

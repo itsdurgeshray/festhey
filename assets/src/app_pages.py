@@ -380,32 +380,49 @@ blog_page = HEAD.format(title='Blog | FestHey') + css('fests', 'fest', 'app') + 
 
 # ======================= article =======================
 SECTIONS = [
- ('sleep', 'Plan your nights before day one', ['Three-night fests are marathons. Pick the two headline nights you care most about and treat the third as optional. Most regret comes from burning out on night one.', 'Check the schedule on the fest page and add the events you want to your saved list, so reminders arrive on your registered email.']),
- ('squad', 'Sort the squad and the money', ['Team events need every member registered before checkout. Create the team early, share the invite link, and let each person pay their own share.', 'Where there is a fee, the amount and the convenience fee are shown before you pay, so there are no surprises.']),
- ('kit', 'Pack like a regular', ['College ID, a power bank, a refillable bottle and cash for food stalls. Many campuses ask for ID at every gate, not just the first one.']),
- ('after', 'After the last act', ['Plan the ride home before the pro-night ends. Campus gates get crowded, and cabs surge right after the final encore.', 'Leave a review of the events you joined. It helps organisers improve and helps next year’s students pick well.']),
+ ('sleep', 'Plan your nights before day one', ['Three-night fests are marathons. Pick the two headline nights you care most about and treat the third as optional. Most regret comes from burning out on night one.', 'Check the schedule on the fest page and save the events you want, so reminders arrive on your registered email.'],
+  [('Use the schedule, not the poster', 'Posters show headliners; the schedule shows clashes. Two events you love can overlap by twenty minutes, and the fest page flags it before you register.')]),
+ ('squad', 'Sort the squad and the money', ['Team events need every member registered before checkout. Create the team early, share the invite link, and let each person pay their own share.', 'Where there is a fee, the amount and the convenience fee are shown before you pay, so there are no surprises.'],
+  [('One captain, one link', 'The captain names the team once and shares a single invite link. Teammates join in a tap and see exactly what they owe.')]),
+ ('kit', 'Pack like a regular', ['Many campuses check ID at every gate, not just the first one. Travel light and keep the essentials in one pocket.'], []),
+ ('after', 'After the last act', ['Plan the ride home before the pro-night ends. Campus gates get crowded, and cabs surge right after the final encore.', 'Leave a review of the events you joined. It helps organisers improve and helps next year’s students pick well.'], []),
 ]
-toc = ''.join(f'<a href="#{i}">{t}</a>' for i, t, _ in SECTIONS)
-body = ''.join(f'<h2 id="{i}">{t}</h2>' + ''.join(f'<p>{x}</p>' for x in ps) + ('<blockquote>&ldquo;The best fest weekend is the one you planned on Thursday.&rdquo;<cite>An organiser at Utsav</cite></blockquote>' if i == 'squad' else '') + ('<figure><img src="assets/img/v4/dance.jpg" alt="Students dancing on a college stage" width="800" height="1200"><figcaption>Day two at a Bengaluru cultural fest.</figcaption></figure>' if i == 'kit' else '') for i, t, ps in SECTIONS)
-art_page = HEAD.format(title=f'{feat[2]} | FestHey Blog') + css('fests', 'fest', 'app') + NAV + f'''
+KIT = ['College ID and your QR pass', 'A charged power bank', 'Refillable water bottle', 'Some cash for food stalls']
+TAKE = ['Pick two headline nights and pace yourself', 'Create team registrations early and share one link', 'Carry ID; gates check it more than once', 'Book your ride home before the encore']
+toc = ''.join(f'<a href="#{i}">{t}</a>' for i, t, _, _ in SECTIONS)
+def sec_html(i, t, ps, subs):
+    h = f'<h2 id="{i}">{t}</h2>' + ''.join(f'<p>{x}</p>' for x in ps)
+    h += ''.join(f'<h3>{st}</h3><p>{sp}</p>' for st, sp in subs)
+    if i == 'squad':
+        h += '<blockquote><span class="ar-q">' + ix('quote') + '</span>The best fest weekend is the one you planned on Thursday.<cite>An organiser at Utsav</cite></blockquote>'
+    if i == 'kit':
+        h += '<ul class="ok-list ar-list">' + ''.join(f'<li><span class="perk-ic">{ic("check")}</span>{k}</li>' for k in KIT) + '</ul>'
+        h += '<figure><img src="assets/img/v4/dance.jpg" alt="Students dancing on a college stage" width="800" height="1200"><figcaption>Day two at a Bengaluru cultural fest.</figcaption></figure>'
+    return h
+body = ''.join(sec_html(*x) for x in SECTIONS)
+takeaways = '<aside class="ar-take"><p class="eyebrow"><span></span>Key takeaways</p><ul class="ok-list">' + ''.join(f'<li><span class="perk-ic">{ic("check")}</span>{k}</li>' for k in TAKE) + '</ul></aside>'
+author = f'<div class="ar-author"><img src="assets/img/av2.jpg" alt="" width="64" height="64"><div><small>Written by</small><b>FestHey Editorial</b><p>The team behind FestHey writes guides from the fest circuit, with tips from organisers and students across India.</p></div>{btn("More Articles", "blog.html", "light", "sm")}</div>'
+shares = f'<div class="ar-shares"><span>Share this</span><button class="icon-btn icon-btn--sm ar-share" aria-label="Share">{icy("share", "ic")}</button><a class="icon-btn icon-btn--sm" href="https://wa.me/?text=How%20to%20survive%20a%20three-night%20college%20fest" target="_blank" rel="noopener" aria-label="Share on WhatsApp">{ix("wa")}</a><button class="icon-btn icon-btn--sm" data-copy="https://festhey.in/blog/survive-three-night-fest" aria-label="Copy link">{ix("link")}</button></div>'
+art_page = HEAD.format(title=f'{feat[2]} | FestHey Blog') + css('fests', 'fest', 'app') + NAV + f"""
 <main class="ar">
   <div class="ar-progress"><i></i></div>
   <header class="ar-head wrap">
-    {crumb(('Blog', 'blog.html'), ('Cultural', 'blog.html'))}
+    <div class="ar-nav"><a class="ar-backlink" href="blog.html">{ic('left', 'ic ic-s')}Back</a>{crumb(('Blog', 'blog.html'), ('Cultural', 'blog.html'), ('Fest survival guide', None))}</div>
+    <span class="chip chip--sun">Cultural</span>
     <h1 class="hero-h">{e(feat[2])}</h1>
     <p class="lead">{e(feat[3])}</p>
-    <div class="ar-by"><span class="avs"><img src="assets/img/av2.jpg" alt="" width="40" height="40"></span><span><b>FestHey Editorial</b><small>Updated Nov 4, 2026 &middot; {feat[5]} min read</small></span><button class="fd-iconbtn ar-share">{icy('share', 'ic ic-s')}<span>Share</span></button></div>
+    <div class="ar-by"><span class="avs"><img src="assets/img/av2.jpg" alt="" width="40" height="40"></span><span><b>FestHey Editorial</b><small>Updated Nov 4, 2026 &middot; {feat[5]} min read</small></span></div>
   </header>
   <div class="wrap"><img class="ar-cover" src="assets/img/v4/pronite.jpg" alt="A college fest pro-night crowd" width="800" height="1200"></div>
   <div class="wrap ar-grid">
-    <nav class="ar-toc" aria-label="Table of contents"><p class="eyebrow"><span></span>On this page</p>{toc}<a class="ar-back" href="blog.html">{ic('left', 'ic ic-xs')}All articles</a></nav>
-    <article class="ar-body"><p class="ar-intro">Big college fests run for days, across stages, labs and grounds. A little planning turns them from a blur into the best weekend of the semester.</p>{body}</article>
+    <nav class="ar-toc" aria-label="Table of contents"><p class="eyebrow"><span></span>On this page</p>{toc}{shares}</nav>
+    <article class="ar-body"><p class="ar-intro">Big college fests run for days, across stages, labs and grounds. A little planning turns them from a blur into the best weekend of the semester.</p>{takeaways}{body}{author}</article>
   </div>
   <section class="wrap fd-sec ar-related"><div class="fd-head"><div><p class="eyebrow"><span></span>Keep reading</p><h2>RELATED READS</h2></div>{btn('All Articles', 'blog.html', 'ink', 'sm')}</div><div class="bl-grid">{''.join(post(p) for p in POSTS[1:4])}</div></section>
-</main>
+{PIT}</main>
 <div class="fd-toast" role="status" aria-live="polite"></div>
 {FOOT}
-''' + SCRIPTS
+""" + SCRIPTS
 
 for name, pg in (('event.html', ev_page), ('team.html', team_page), ('blog.html', blog_page), ('article.html', art_page)):
     open(os.path.join(ROOT, name), 'w').write(pg)
