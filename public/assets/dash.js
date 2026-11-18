@@ -87,9 +87,17 @@
       res.className = 'res res--' + kind; void res.offsetWidth; res.classList.add('pop');
       $('.res-t', res).textContent = t; $('.res-p', res).textContent = p;
     };
+    // registration ID: uppercase and dashes as you type (FH-CC-26-XXXX), paste-friendly
+    const inp0 = $('input', form), fld = inp0.closest('.fld');
+    inp0.addEventListener('input', () => {
+      const raw = inp0.value.toUpperCase().replace(/[^A-Z0-9]/g, '').slice(0, 10);
+      const parts = [raw.slice(0, 2), raw.slice(2, 4), raw.slice(4, 6), raw.slice(6)].filter(Boolean);
+      inp0.value = parts.join('-'); fld.classList.remove('is-bad');
+    });
     form.addEventListener('submit', ev => {
       ev.preventDefault();
-      const inp = $('input', form), id = inp.value.trim().toUpperCase(); if (!id) return inp.focus();
+      const inp = inp0, id = inp.value.trim().toUpperCase();
+      if (id.length < 13) { fld.classList.add('is-bad'); inp.focus(); return toast(id ? 'A registration ID looks like FH-CC-26-8QX1' : 'Enter the registration ID'); }
       let ok = /^FH-CC-26-[A-Z0-9]{4}$/.test(id), msg;
       if (ok && seen.has(id)) { ok = false; msg = 'This pass was already used at ' + new Date().toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' }) + '.'; }
       const time = new Date().toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' });
@@ -99,7 +107,9 @@
       li.className = 'hrow is-new hrow--' + (ok ? 'ok' : 'bad');
       li.innerHTML = `<span class="hrow-ic"></span><span><b>${ok ? 'Rohan Verma' : 'Rejected scan'}</b><small></small></span><time>${time}</time>`;
       $('small', li).textContent = id; $('.hrow-ic', li).innerHTML = $((ok ? '.hrow--ok' : '.hrow--bad') + ' .hrow-ic', list).innerHTML;
-      list.prepend(li); inp.value = ''; inp.focus();
+      list.prepend(li);
+      if (ok) inp.value = ''; else { fld.classList.add('is-bad'); inp.select(); }
+      inp.focus();
     });
   }
 

@@ -873,3 +873,5 @@ html:not(.is-editing) .pf-av{cursor:default}
   .pf-meter .pf-mt b{font-size:var(--b16);line-height:24px}
 }
 .pf-meter .dot svg{transform:none;width:16px;height:16px}
+.code-row .fld,.code-row .btn{height:56px}.code-row .fld input{text-transform:uppercase;letter-spacing:.04em}.code-row .fld input::placeholder{text-transform:none;letter-spacing:0}
+@media (max-width:640px){.code-row .fld{flex:none}.code-row .btn{width:100%}}
