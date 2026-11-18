@@ -555,11 +555,6 @@ button.chip:hover{box-shadow:inset 0 0 0 2px var(--ink)}
 }
 
 /* ===== round 6: buttons, beams, mobile nav ===== */
-/* every CTA: label centred, icon pinned right */
-.btn{position:relative;justify-content:center;padding:0 60px}
-.btn .dot{position:absolute;right:8px;top:50%;margin-top:-20px}
-.btn--sm{padding:0 46px}
-.btn--sm .dot{right:6px;margin-top:-16px}
 /* pit lights: soft, blurred cones instead of hard rectangles */
 .beams span{width:340px;clip-path:none;border-radius:50%;background:radial-gradient(50% 60% at 50% 0%,rgba(255,250,215,.55),rgba(255,250,215,.18) 45%,rgba(255,250,215,0) 75%);filter:blur(28px);mix-blend-mode:screen}
 
@@ -580,13 +575,12 @@ button.chip:hover{box-shadow:inset 0 0 0 2px var(--ink)}
   .nav-sheet a{display:flex;align-items:center;justify-content:space-between;flex-direction:row-reverse;min-height:52px;padding:0 16px;border-radius:var(--r-md)}
   .nav-sheet a:hover,.nav-sheet a:active{background:var(--snow)}
   .nav-sheet-cta{display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:8px 0 0}
-  .nav-sheet-cta .btn{width:100%;padding:0 44px}
+  .nav-sheet-cta .btn{width:100%}
   .nav-sheet-cta .btn{font-size:var(--b14)}
 }
 @media (max-width:640px){
-  .nav-end .btn--sm{padding:0 40px 0 14px;font-size:var(--b14)}
-  .nav-end .btn--sm .dot{width:28px;height:28px;margin-top:-14px}
-  .btn{padding:0 52px}
+  .nav-end .btn--sm{padding:0 6px 0 14px;font-size:var(--b14)}
+  .nav-end .btn--sm .dot{width:28px;height:28px}
 }
 @media (max-width:380px){ .nav-end{display:none} }
 /* secondary buttons never blend: firmer ring everywhere, tinted fill on white surfaces */
@@ -595,3 +589,22 @@ button.chip:hover{box-shadow:inset 0 0 0 2px var(--ink)}
 :is(.dcard,.planc:not(.planc--pro),.modal-card,.sumcard,.hx-ch,.lc,.cc,.evc,.tk,.fd-card,.fd-side,.pay-r,.mreg,.erow,.todo,.sp,.lockc,.danger,.hq) .btn--light{background:var(--snow);box-shadow:inset 0 0 0 2px rgba(20,10,4,.14)}
 :is(.dcard,.planc:not(.planc--pro),.modal-card,.sumcard,.hx-ch,.lc,.cc,.evc,.tk,.fd-card,.fd-side,.pay-r,.mreg,.erow,.todo,.sp,.lockc,.danger,.hq) .btn--light:hover{background:#FFF3D1;box-shadow:inset 0 0 0 2px rgba(20,10,4,.24)}
 @media (max-width:640px){.hero-cta{display:grid;grid-template-columns:minmax(0,1fr);width:100%;max-width:none;gap:12px}.hero-cta .btn{width:100%}}
+/* one perforation everywhere: evenly spaced 4px dots, never cut at the ends (replaces CSS dashed borders) */
+:root{--perf:radial-gradient(circle,rgba(20,10,4,.28) 2px,transparent 2.5px);--perf-l:radial-gradient(circle,rgba(255,250,240,.45) 2px,transparent 2.5px)}
+html .v-ticket .evc-cut{border-top:0;height:4px;background:var(--perf) 0 0/12px 4px space no-repeat}
+html .v-ticket .evc-cut span{top:-10px}
+html .ev-fee-cut::before,html .inv-cut::before{border-top:0;height:4px;background:var(--perf) 0 0/12px 4px space no-repeat}
+html .tk-cut::before{background:var(--perf) 0 0/12px 4px space no-repeat}
+html .mreg-cut{background:var(--perf) 0 0/4px 12px no-repeat space}
+html .epass-stub{border-left:0;background:var(--perf) 0 0/4px 12px no-repeat space,var(--sun)}
+html .sum .sum-total,html .acc-note,html .v-calendar .evc-foot{border-top:0;background:var(--perf) 0 0/12px 4px space no-repeat}
+html .fd-tl li{border-bottom:0;background:var(--perf) 0 100%/12px 4px space no-repeat}
+html .fd-tl li:last-child{background:none}
+html .ab-stats div{border-left:0;background:var(--perf) 0 0/4px 12px no-repeat space}
+html .ab-stats div:first-child{background:none}
+html .fd-highs li{border-left:0;background:var(--perf-l) 0 0/4px 12px no-repeat space}
+html .fd-highs li:first-of-type{background:none}
+@media (max-width:640px){
+  html .epass-stub{background:var(--perf) 0 0/12px 4px space no-repeat,var(--sun)}
+}
+@media (max-width:860px){ html .ab-stats div:nth-child(3),html .fd-highs li:nth-of-type(3){background:none} }
