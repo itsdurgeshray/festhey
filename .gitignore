@@ -1,3 +1,4 @@
+node_modules
+.next
+.next-*
 .DS_Store
-__pycache__/
-qa/

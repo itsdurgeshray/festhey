@@ -1,0 +1,52 @@
+/* FestHey printable documents (ticket, receipt, invoice). site.css tokens. */
+body:has(.doc-wrap){background:var(--snow)}
+.doc-wrap{max-width:720px;margin:0 auto;padding:24px 16px 64px}
+.doc-bar{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:16px}
+.doc-back{display:inline-flex;align-items:center;gap:6px;height:40px;padding:0 16px;border-radius:var(--r-pill);background:var(--paper);box-shadow:var(--sh-1);font-size:var(--b14);line-height:var(--b14-lh);font-weight:700}
+.doc{padding:32px;border-radius:var(--r-lg);background:var(--paper);box-shadow:var(--sh-2)}
+.doc-h{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-bottom:24px}
+.doc-h img{height:36px;width:auto}
+.doc-h>div{text-align:right}
+.doc-kind{font-family:var(--fd);font-weight:600;font-size:var(--h4);line-height:var(--h4-lh)}
+.doc-id{font-size:var(--b12);line-height:var(--b12-lh);color:var(--ink-60)}
+.doc-main{display:flex;justify-content:space-between;gap:24px;padding:24px;border-radius:var(--r-md);background:var(--snow)}
+.doc-k{font-size:var(--eb);line-height:var(--eb-lh);font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-60)}
+.doc-v{margin-bottom:16px;font-size:var(--b14);line-height:var(--b14-lh)}
+.doc-v:last-child{margin-bottom:0}
+.doc-qr{display:flex;flex-direction:column;align-items:center;gap:8px;width:180px;flex:none}
+.doc-qr .qr{width:100%;padding:8px;border-radius:var(--r-sm);background:var(--paper)}
+.doc-qr small{font-size:var(--b12);line-height:var(--b12-lh);font-weight:700}
+.doc-t{width:100%;margin-top:24px;border-collapse:collapse;font-size:var(--b14);line-height:var(--b14-lh)}
+.doc-t td{padding:10px 0}
+.doc-t td:last-child{text-align:right;font-weight:700}
+.doc-total td{padding:14px 16px;background:var(--sun);font-size:var(--b16)}
+.doc-total td:first-child{border-radius:var(--r-sm) 0 0 var(--r-sm)}
+.doc-total td:last-child{border-radius:0 var(--r-sm) var(--r-sm) 0}
+.doc-note{margin-top:16px;font-size:var(--b12);line-height:var(--b12-lh);color:var(--ink-60)}
+[hidden]{display:none !important}
+@media (max-width:640px){
+  .doc{padding:20px}
+  .doc-main{flex-direction:column;padding:16px}
+  .doc-qr{width:100%;max-width:220px;align-self:center}
+}
+@media print{
+  .no-print{display:none !important}
+  body{background:#fff !important}
+  .noise{display:none}
+  .doc-wrap{padding:0;max-width:none}
+  .doc{box-shadow:none;padding:0}
+}
+
+/* 404 */
+body:has(.nf){background:var(--orange)}
+.nf{position:relative;overflow:hidden;isolation:isolate;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;min-height:100vh;padding:48px 16px;text-align:center;color:var(--snow);background:radial-gradient(700px 480px at 80% 10%,rgba(255,212,0,.45),rgba(255,212,0,0) 62%),var(--orange)}
+.nf>*{position:relative;z-index:2}
+.nf-logo img{height:40px;width:auto}
+.nf-code{font-family:var(--fd);font-weight:700;font-size:120px;line-height:128px;color:var(--sun)}
+.nf-h{font-family:var(--fd);font-weight:700;font-size:var(--h2);line-height:var(--h2-lh)}
+.nf-p{max-width:420px;font-size:var(--b16);line-height:var(--b16-lh);opacity:.92}
+.nf-ctas{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin-top:8px}
+.nf-links{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-top:8px}
+.nf-links a{padding:8px 16px;border-radius:var(--r-pill);background:rgba(255,250,240,.18);font-size:var(--b14);line-height:var(--b14-lh);font-weight:700}
+.nf-links a:hover{background:var(--snow);color:var(--ink)}
+@media (max-width:640px){.nf-code{font-size:88px;line-height:96px}.nf-ctas .btn{width:100%}}
